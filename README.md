@@ -1,5 +1,5 @@
 # ToneVault
-A ToneVault é um website de música, nele vamos ter uma moeda chamada Toins, que vai ser usado como recompensas ao ouvir musicas e dar like ou dislike, ou seja,
-ao interagir 
+A ToneVault é um website de audios(Musica, Beats, Enfeitos Sonoros, Falas) todos mp3, nele vamos ter uma moeda chamada Toins, que vai ser usado como recompensas ao ouvir musicas e dar like etc, ou seja,
+ao interagir com a plataforma e com a 
 
 Earn Toins on ToneVault
