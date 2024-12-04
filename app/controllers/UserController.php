@@ -1,7 +1,11 @@
 <?php
 
+require_once './app/controllers/LoginPageController.php';
 class UserController {
     public function login() {
+        
+
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'];
             $password = $_POST['password'];
@@ -16,7 +20,7 @@ class UserController {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
 
-                header('Location: /dashboard');
+                header('Location: /home');
                 exit();
             } else {
                 $error = 'Invalid username or password.';
