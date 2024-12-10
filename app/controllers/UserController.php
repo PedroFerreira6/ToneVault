@@ -7,23 +7,23 @@ class UserController {
 
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = $_POST['username'];
+            $email = $_POST['email'];
             $password = $_POST['password'];
 
-            require_once 'models/UserModel.php';
+            require_once './app/models/UserModel.php';
             $userModel = new UserModel();
 
-            $user = $userModel->authenticate($username, $password);
+            $user = $userModel->authenticate($email, $password);
 
             if ($user) {
                 session_start();
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
+                $_SESSION['email'] = $user['email'];
 
                 header('Location: /home');
                 exit();
             } else {
-                $error = 'Invalid username or password.';
+                $error = 'Invalid email or password.';
                 header( 'Location: /login');
             }
         } else {

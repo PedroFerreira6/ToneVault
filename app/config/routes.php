@@ -1,7 +1,7 @@
 <?php
 
 return [
-    '/' => [
+    '' => [
         'controller' => 'HomePageController', 
         'action' => 'index' 
     ],
@@ -11,6 +11,15 @@ return [
         'action' => 'index' 
     ],
 
+    'home' => [
+        'controller' => 'HomePageController', 
+        'action' => 'index' 
+    ],
+
+    'login/logar' => [
+        'controller' => 'UserController', 
+        'action' => 'login' 
+    ]
     
 ]
 
