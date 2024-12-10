@@ -3,7 +3,7 @@
 class LoginPageController {
 
     public function index(){
-        require_once '../app/views/login.php';
+        require_once 'app/views/loginView.php';
     }
 
 }

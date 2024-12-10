@@ -24,10 +24,10 @@ class UserController {
                 exit();
             } else {
                 $error = 'Invalid username or password.';
-                require_once 'views/login.php';
+                header( 'Location: /login');
             }
         } else {
-            require_once 'views/login.php';
+            header( 'Location: /login');
         }
     }
 

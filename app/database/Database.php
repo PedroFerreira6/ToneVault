@@ -12,7 +12,7 @@ class Database
                 self::$instance = new PDO(
                     'mysql:host=sql102.infinityfree.com;dbname=if0_37791864_XXX',
                     'if0_37791864', //USERNAME
-                    'QMEp4D9hW0', //PASSOWRD
+                    'macacos2000', //PASSOWRD
                     [
                         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Modo ERRO
                         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Retorno de Argumentod
