@@ -68,7 +68,7 @@
 ---
 
 ## **Modelo Entidade-Relacionamento (ER)**
-
+![Modelo ER](https://raw.githubusercontent.com/PedroFerreira6/ToneVault/main/Diagram.svg)
 ---
 
 ## **Perfis de Utilizadores**
