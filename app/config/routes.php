@@ -2,11 +2,6 @@
 
 return [
     '' => [
-        'controller' => 'HomePageController', 
-        'action' => 'index' 
-    ],
-
-    'login' => [
         'controller' => 'LoginPageController', 
         'action' => 'index' 
     ],
@@ -19,6 +14,10 @@ return [
     'login/logar' => [
         'controller' => 'UserController', 
         'action' => 'login' 
+    ],
+    'player' => [
+        'controller' => 'PlayerController', 
+        'action' => 'index' 
     ]
     
 ]

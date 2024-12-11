@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             padding: 0;
             background: linear-gradient(135deg, #2a0057, #1a0033);
             background-image: url(./app/assets/images/banner-bg.jpg);
+            background-repeat:round;
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -20,6 +22,7 @@
             align-items: center;
             min-height: 100vh;
         }
+
 
         .login-container {
             background: rgba(255, 255, 255, 0.1);
@@ -30,7 +33,8 @@
             max-width: 400px;
             width: 100%;
             backdrop-filter: blur(40px);
-            margin-bottom: 40px; /* Ensure space between form and footer */
+            margin-bottom: 40px;
+            /* Ensure space between form and footer */
         }
 
         .login-container img {
@@ -80,8 +84,10 @@
             color: #fff;
             cursor: pointer;
             transition: transform 0.3s ease, background 0.3s ease;
-            box-sizing: border-box; /* Ensure consistent sizing */
+            box-sizing: border-box;
+            /* Ensure consistent sizing */
         }
+
         .login-container button:hover {
             transform: scale(1.05);
             background: linear-gradient(90deg, #6a0080, #9c27b0);
@@ -115,7 +121,8 @@
         }
 
         footer {
-            margin-top: 0px; /* Push the footer to the bottom */
+            margin-top: 0px;
+            /* Push the footer to the bottom */
             color: #b39ddb;
             font-size: 0.8rem;
             text-align: center;
@@ -139,11 +146,12 @@
 
             .login-container h1 {
                 font-size: 1.5rem;
-                color:#9c27b0;
+                color: #9c27b0;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <img src="app/assets/images/logo/logoW.png" alt="ToneVault Logo">
@@ -161,11 +169,12 @@
         <div class="social-login">
             <p>Dont have an Account? <a href="#" style="color:#d1c4e9"> Sign up</a>
             </p>
-            
+
         </div>
     </div>
     <footer>
         <p>&copy; 2024 ToneVault | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 </body>
+
 </html>
