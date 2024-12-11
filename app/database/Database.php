@@ -10,7 +10,7 @@ class Database
         if (self::$instance === null) {
             try {
                 self::$instance = new PDO(
-                    'mysql:host=sql102.infinityfree.com;port=3306;dbname=if0_37791864_tonevault',
+                    'mysql:host=sql102.infinityfree.com;dbname=if0_37791864_tonevault',
                     'if0_37791864', //USERNAME
                     'macacos2000', //PASSOWRD
                     [
