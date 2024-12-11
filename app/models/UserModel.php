@@ -9,12 +9,16 @@ class UserModel {
     }
 
     public function authenticate($email, $password) {
+
+        $hashedPassword = hash('sha256', $password);
+
+
         $stmt = $this->db->prepare('SELECT * FROM users WHERE email = ? LIMIT 1');
         $stmt->execute([$email]);
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && ($password==$user['password_hash'])) {
+        if ($user && ($hashedPassword==$user['password_hash'])) {
             return $user; 
         }
 
