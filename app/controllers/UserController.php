@@ -14,7 +14,6 @@ class UserController {
             $user = $userModel->authenticate($email, $password);
 
             if ($user) {
-                session_start();
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['email'] = $user['email'];
 

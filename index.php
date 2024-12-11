@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 
 $routes = require_once './app/config/routes.php';
