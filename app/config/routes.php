@@ -14,6 +14,10 @@ return [
     'login/logar' => [
         'controller' => 'UserController', 
         'action' => 'login' 
+    ],
+    'player' => [
+        'controller' => 'PlayerController', 
+        'action' => 'index' 
     ]
     
 ]
