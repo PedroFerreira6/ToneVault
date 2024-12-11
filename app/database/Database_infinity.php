@@ -10,9 +10,9 @@ class Database
         if (self::$instance === null) {
             try {
                 self::$instance = new PDO(
-                    'mysql:host=localhost;dbname=tonevault',
-                    'root', //USERNAME
-                    '', //PASSOWRD
+                    'mysql:host=sql102.infinityfree.com;dbname=if0_37791864_tonevault',
+                    'if0_37791864', //USERNAME
+                    'macacos2000', //PASSOWRD
                     [
                         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Modo ERRO
                         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Retorno de Argumentod
@@ -26,3 +26,4 @@ class Database
         return self::$instance;
     }
 }
+

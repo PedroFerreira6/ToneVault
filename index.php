@@ -30,10 +30,14 @@ if (array_key_exists($route, $routes)){
 
 } else {
 
-    http_response_code(404);
+    
+    require_once 'app/controllers/HomePageController.php';
 
-    echo "Página não encontrada";
 
+
+    $controller = new HomePageController();
+
+    $controller->index();
 }
 
 ?>
