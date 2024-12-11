@@ -12,9 +12,8 @@
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li><a href="/" class="active">Inicio</a></li>
-                        <li><a href="/procurar">Procurar</a></li>
-                        <?php if(isset($_SESSION['user_id'])){?> <li><a href="/perfil">Author</a></li> <?php }else{ ?>
-                        <li><a href="/login">Login</a></li><?php } ?>
+                        <li><a href="/search">Search</a></li>
+                        <li><a href="/profile">Profile</a></li>
                     </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>

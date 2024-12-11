@@ -68,7 +68,7 @@ https://templatemo.com/tm-577-liberty-market
         <div class="col-lg-5 offset-lg-1">
           <div class="owl-banner owl-carousel">
             <div class="item">
-              <img src="app/assets/images/logo/Toin.png" alt="">
+              <img src="app/assets/images/vault3.png" alt="">
             </div>
             <div class="item">
               <img src="app/assets/images/ilusIMG.png" alt="">
