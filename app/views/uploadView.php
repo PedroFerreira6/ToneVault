@@ -88,7 +88,7 @@ https://templatemo.com/tm-577-liberty-market
                 <div class="col-lg-12">
                     <div class="section-heading">
                         <div class="line-dec"></div>
-                        <h2>Apply For <em>Your Item</em> Here.</h2>
+                        <h2>Apply For <em>Your Audio</em> Here.</h2>
                     </div>
                 </div>
                 <div class="col-12">
