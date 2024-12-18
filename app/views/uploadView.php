@@ -151,7 +151,7 @@ https://templatemo.com/tm-577-liberty-market
     outline: none;
     padding: 0 15px;
     text-align: left;
-    width: 100%; /* 100% da largura do container 
+    width: 100%; 
     ">
                                         <option value="0">Privado</option>
                                         <option value="1">Publico</option>
@@ -179,7 +179,7 @@ https://templatemo.com/tm-577-liberty-market
     outline: none;
     padding: 0 15px;
     text-align: left;
-    width: 100%; /* 100% da largura do container 
+    width: 100%; 
     ">
                                         <option value="0">Only For Listening</option>
                                         <option value="1">Sell The Audio Rights</option>
