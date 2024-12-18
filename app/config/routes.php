@@ -18,6 +18,14 @@ return [
     'player' => [
         'controller' => 'PlayerController', 
         'action' => 'index' 
+    ],
+    'login/logout' => [
+        'controller' => 'UserController', 
+        'action' => 'logout' 
+    ],
+    'upload' => [
+        'controller' => 'UploadController', 
+        'action' => 'index' 
     ]
     
 ]

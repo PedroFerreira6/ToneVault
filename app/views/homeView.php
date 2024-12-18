@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="author" content="templatemo">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="author" content="templatemo">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <title>ToneVault</title>
-    <link rel="icon" href="app/assets/images/logo/logo.svg" type="image/x-icon">
+  <title>ToneVault</title>
+  <link rel="icon" href="app/assets/images/logo/logo.svg" type="image/x-icon">
 
-    <!-- Bootstrap core CSS -->
-    <link href="app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="app/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="app/assets/css/templatemo-liberty-market.css">
-    <link rel="stylesheet" href="app/assets/css/owl.css">
-    <link rel="stylesheet" href="app/assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-<!--
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="app/assets/css/fontawesome.css">
+  <link rel="stylesheet" href="app/assets/css/templatemo-liberty-market.css">
+  <link rel="stylesheet" href="app/assets/css/owl.css">
+  <link rel="stylesheet" href="app/assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <!--
 
 TemplateMo 577 Liberty Market
 
 https://templatemo.com/tm-577-liberty-market
 
 -->
-  </head>
+</head>
 
 <body>
 
@@ -47,7 +47,7 @@ https://templatemo.com/tm-577-liberty-market
   <!-- ***** Preloader End ***** -->
 
   <?php include_once 'headerView.php'; ?>
-  
+
 
   <!-- ***** Main Banner Area Start ***** -->
   <div class="main-banner" style="background-image: url('app/assets/images/3rdBG.png');">
@@ -155,7 +155,7 @@ https://templatemo.com/tm-577-liberty-market
                   </span>
                   <div class="line-dec"></div>
                   <span class="bid">
-                  Listen for<br><strong>0 Toins</strong><br>
+                    Listen for<br><strong>0 Toins</strong><br>
                   </span>
                   <span class="ends">
                     <br><strong>purchase rights</strong><br>
@@ -171,30 +171,9 @@ https://templatemo.com/tm-577-liberty-market
       </div>
     </div>
   </div>
+  <?php
+  include_once 'footerView.php';
+  ?>
+</body>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © 2024 ToneVault. All rights reserved.
-          &nbsp;&nbsp;</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="app/vendor/jquery/jquery.min.js"></script>
-  <script src="app/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-  <script src="app/assets/js/isotope.min.js"></script>
-  <script src="app/assets/js/owl-carousel.js"></script>
-
-  <script src="app/assets/js/tabs.js"></script>
-  <script src="app/assets/js/popup.js"></script>
-  <script src="app/assets/js/custom.js"></script>
-
-  </body>
 </html>
