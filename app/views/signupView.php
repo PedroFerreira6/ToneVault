@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - ToneVault</title>
+    <title>Signup - ToneVault</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
@@ -14,7 +14,7 @@
             padding: 0;
             background: linear-gradient(135deg, #2a0057, #1a0033);
             background-image: url(./app/assets/images/banner-bg.jpg);
-            background-repeat:round;
+            background-repeat: round;
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -135,6 +135,12 @@
             text-decoration: none;
         }
 
+
+        .error{
+            color:red;
+            font-size: 18px;
+        }
+
         footer a:hover {
             text-decoration: underline;
         }
@@ -155,19 +161,28 @@
 <body>
     <div class="login-container">
         <img src="app/assets/images/logo/logoW.png" alt="ToneVault Logo">
-        <h1 style="color:#fff">Login</h1>
+        <h1 style="color:#fff">Sign up</h1>
         <?php if (isset($error)): ?>
-            <p class="error"><?= htmlspecialchars($error) ?></p>
+            <h1 class="error"><?= htmlspecialchars($error) ?></h1>
         <?php endif; ?>
-        <form action="login/logar" method="POST">
+        <form action="signup/register" method="POST">
+
+            <label for="nome">Username</label>
+            <input type="text" name="nome" id="nome" placeholder="Enter your username" required>
+
             <label for="email">Email Address</label>
             <input type="email" name="email" id="email" placeholder="Enter your email" required>
-            <label for="password">Password</label>
+
+            <label for="cpassword">Password</label>
             <input type="password" name="password" id="password" placeholder="Enter your password" required>
-            <button type="submit">Login</button>
+            <label for="password">Confirm Password</label>
+            <input type="password" name="cpassword" id="cpassword" placeholder="Confirm your password" required>
+
+
+            <button type="submit">Sign up</button>
         </form>
         <div class="social-login">
-            <p>Dont have an Account? <a href="/signup" style="color:#d1c4e9"> Sign up</a>
+            <p>Already have an Account? <a href="/" style="color:#d1c4e9"> Log in</a>
             </p>
 
         </div>

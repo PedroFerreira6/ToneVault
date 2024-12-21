@@ -1,9 +1,11 @@
 <?php
 
 require_once './app/controllers/LoginPageController.php';
-class UserController {
-    public function login() {
-        
+
+class UserController
+{
+    public function login()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -21,17 +23,75 @@ class UserController {
                 exit();
             } else {
                 $error = 'Invalid email or password.';
-                header( 'Location: /login');
+                header('Location: /login');
             }
         } else {
-            header( 'Location: /login');
+            header('Location: /login');
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_start();
         session_destroy();
         header('Location: /login');
         exit();
+    }
+
+    public function signup()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = $_POST['nome'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $cpassword = $_POST['cpassword'];
+            $saldo = 0;
+            $nivel = 1;
+            $estado = 1;
+
+
+            require_once 'app/models/UserModel.php';
+            $userModel = new UserModel();
+
+
+
+            if (isset($name) && isset($email) && isset($password) && isset($cpassword)) {
+                if (empty($name) && empty($email) && empty($password) && empty($cpassword)) {
+                    $error = 'Invalida data.';
+                    header('Location: /signup');
+                    exit();
+                }
+            }
+
+            if (!isset($name) && !isset($email) && !isset($password) && !isset($cpassword)) {
+                $error = 'Invalida data.';
+                header('Location: /signup');
+                exit();
+            }
+
+            if ($password != $cpassword) {
+                $error = 'Passwords dont match.';
+                header('Location: /signup');
+                exit();
+            }
+
+            if ($userModel->userExists($email)) {
+                $error = 'User already exists with this email.';
+                header('Location: /signup');
+                exit();
+            }
+
+            $userCreated = $userModel->createUser($name, $email, $password, $saldo, $nivel, $estado);
+
+            if ($userCreated) {
+                header('Location: /');
+                exit();
+            } else {
+                $error = 'Failed to create user. Please try again.';
+                header('Location: /signup');
+            }
+        } else {
+            header('Location: /signup');
+        }
     }
 }

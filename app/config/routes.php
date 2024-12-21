@@ -23,6 +23,16 @@ return [
         'controller' => 'UserController', 
         'action' => 'logout' 
     ],
+    'signup' => [
+        'controller' => 'SignupPageController', 
+        'action' => 'index' 
+    ],
+
+    'signup/register' => [
+        'controller' => 'UserController', 
+        'action' => 'signup' 
+    ],
+
     'upload' => [
         'controller' => 'UploadController', 
         'action' => 'index' 
