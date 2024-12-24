@@ -92,7 +92,7 @@ https://templatemo.com/tm-577-liberty-market
                     </div>
                 </div>
                 <div class="col-12">
-                    <form id="contact" action="" method="post" style="width: 100%;">
+                    <form id="contact" action="/upload/start" enctype="multipart/form-data" method="post" style="width: 100%;">
                         <div class="row">
                             <div class="col-12" style="width: 100%;">
                                 <fieldset>
@@ -127,7 +127,7 @@ https://templatemo.com/tm-577-liberty-market
                             <div class="col-12" style="width: 100%;">
                                 <fieldset>
                                     <label for="price">Price Of Item</label>
-                                    <input type="text" name="price" id="price" placeholder="0 Toins" style="width: 100%;" autocomplete="on" required="">
+                                    <input type="number" name="price" id="price" placeholder="0 Toins" style="width: 100%;" autocomplete="on" required="">
                                 </fieldset>
                             </div>
                             <br>
@@ -153,8 +153,8 @@ https://templatemo.com/tm-577-liberty-market
     text-align: left;
     width: 100%; 
     ">
-                                        <option value="0">Privado</option>
-                                        <option value="1">Publico</option>
+                                        <option value="0">Private</option>
+                                        <option value="1">Public</option>
                                     </select>
                                 </fieldset>
                             </div>
@@ -190,7 +190,7 @@ https://templatemo.com/tm-577-liberty-market
                             <div class="col-12" style="width: 100%;">
                                 <fieldset>
                                     <label for="file">Your File</label>
-                                    <input type="file" id="file" name="myfiles[]" multiple="" style="width: 100%;">
+                                    <input type="file" id="file" name="myfile" style="width: 100%;" accept="audio/mp3">
                                 </fieldset>
                             </div>
                             <div class="col-12" style="width: 100%;">

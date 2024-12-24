@@ -92,7 +92,7 @@ https://templatemo.com/tm-577-liberty-market
         </div>
         <div class="col-lg-4">
           <div class="main-button">
-            <a href="publicar">PUBLISH AUDIO</a>
+            <a href="/upload">PUBLISH AUDIO</a>
           </div>
         </div>
         <div class="col-lg-4">
@@ -143,29 +143,38 @@ https://templatemo.com/tm-577-liberty-market
         </div>
         <div class="col-lg-12">
           <div class="row grid">
-            <div class="col-lg-6 currently-market-item all msc">
-              <div class="item">
-                <div class="left-image">
-                  <img src="app/assets/images/MusicImage.png" alt="" style="border-radius: 20px; min-width: 195px;max-height:300px">
-                </div>
-                <div class="right-content">
-                  <h4>MusicItem</h4>
-                  <span class="author">
-                    <h6>AuthorProfile<br><a href="perfil"></h6>
-                  </span>
-                  <div class="line-dec"></div>
-                  <span class="bid">
-                    Listen for<br><strong>0 Toins</strong><br>
-                  </span>
-                  <span class="ends">
-                    <br><strong>purchase rights</strong><br>
-                  </span>
-                  <div class="text-button">
-                    <a href="details.html">View Details</a>
+            <!-- Isto é o começo do item -->
+            <?php
+            foreach ($audiosList as $audio) {
+            ?>
+              <div class="col-lg-6 currently-market-item all msc">
+                <div class="item">
+                  <div class="left-image">
+                    <img src="app/assets/images/MusicImage.png" alt="" style="border-radius: 20px; min-width: 195px;max-height:300px">
+                  </div>
+                  <div class="right-content">
+                    <h4><?= $audio['titulo']; ?></h4>
+                    <span class="author">
+                      <h6><?= $audio['nome']; ?><br><a href="perfil"></h6>
+                    </span>
+                    <div class="line-dec"></div>
+                    <span class="bid">
+                      Listen for<br><strong><?= $audio['valor']; ?> Toins</strong><br>
+                    </span>
+                    <span class="ends">
+                      <?php if ($audio['estado'] == 0) echo "<br><strong>Buy just to listen</strong><br>";
+                      else echo "<br><strong>Purchase rights</strong><br>";
+                      ?>
+                    </span>
+                    <div class="text-button">
+                      <a href="/item?id=<?= $audio['id']; ?>">View Details</a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+              <!-- Isto é o FIM do item -->
+
+            <?php } ?>
           </div>
         </div>
       </div>

@@ -1,43 +1,56 @@
 <?php
 
-return [
+$routes = [
     '' => [
         'controller' => 'LoginPageController', 
-        'action' => 'index' 
+        'action' => 'index'
     ],
 
     'home' => [
         'controller' => 'HomePageController', 
-        'action' => 'index' 
+        'action' => 'index'
     ],
 
     'login/logar' => [
         'controller' => 'UserController', 
-        'action' => 'login' 
+        'action' => 'login'
     ],
     'player' => [
         'controller' => 'PlayerController', 
-        'action' => 'index' 
+        'action' => 'index'
     ],
     'login/logout' => [
         'controller' => 'UserController', 
-        'action' => 'logout' 
+        'action' => 'logout'
     ],
     'signup' => [
         'controller' => 'SignupPageController', 
-        'action' => 'index' 
+        'action' => 'index'
     ],
 
     'signup/register' => [
         'controller' => 'UserController', 
-        'action' => 'signup' 
+        'action' => 'signup'
     ],
 
     'upload' => [
         'controller' => 'UploadController', 
-        'action' => 'index' 
+        'action' => 'index'
+    ],
+
+    'upload/start' => [
+        'controller' => 'UploadController', 
+        'action' => 'processUpload'
     ]
-    
-]
+];
+// ISTo è para paginas COM GEtS
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $routes['item?id=' . $_GET['id']] = [
+        'controller' => 'ItemPageController',
+        'action' => 'index'
+    ];
+}
+
+return $routes;
 
 ?>
