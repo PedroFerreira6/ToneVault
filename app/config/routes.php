@@ -2,55 +2,67 @@
 
 $routes = [
     '' => [
-        'controller' => 'LoginPageController', 
+        'controller' => 'LoginPageController',
         'action' => 'index'
     ],
 
     'home' => [
-        'controller' => 'HomePageController', 
+        'controller' => 'HomePageController',
         'action' => 'index'
     ],
 
     'login/logar' => [
-        'controller' => 'UserController', 
+        'controller' => 'UserController',
         'action' => 'login'
     ],
     'player' => [
-        'controller' => 'PlayerController', 
+        'controller' => 'PlayerController',
         'action' => 'index'
     ],
-    'login/logout' => [
-        'controller' => 'UserController', 
+    'logout' => [
+        'controller' => 'UserController',
         'action' => 'logout'
     ],
     'signup' => [
-        'controller' => 'SignupPageController', 
+        'controller' => 'SignupPageController',
         'action' => 'index'
     ],
 
     'signup/register' => [
-        'controller' => 'UserController', 
+        'controller' => 'UserController',
         'action' => 'signup'
     ],
 
     'upload' => [
-        'controller' => 'UploadController', 
+        'controller' => 'UploadController',
         'action' => 'index'
     ],
 
     'upload/start' => [
-        'controller' => 'UploadController', 
+        'controller' => 'UploadController',
         'action' => 'processUpload'
+    ],
+
+    'buy' => [
+        'controller' => 'ItemPageController',
+        'action' => 'buy'
+    ],
+    'like' => [
+        'controller' => 'ItemPageController',
+        'action' => 'like'
     ]
 ];
+
+
 // ISTo è para paginas COM GEtS
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $routes['item?id=' . $_GET['id']] = [
         'controller' => 'ItemPageController',
         'action' => 'index'
     ];
+    $routes['edit?id=' . $_GET['id']] = [
+        'controller' => 'ItemPageController',
+        'action' => 'edit'
+    ];
 }
-
 return $routes;
-
-?>

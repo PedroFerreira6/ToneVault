@@ -3,7 +3,8 @@
 class LoginPageController {
 
     public function index(){
-        require_once './app/views/loginView.php';
+        if(!isset($_SESSION['user_id']))require_once './app/views/loginView.php';
+        else header("location:/home");
     }
 
 }
