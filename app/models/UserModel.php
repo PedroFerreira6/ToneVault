@@ -36,4 +36,11 @@ class UserModel {
         $stmt = $this->db->prepare('INSERT INTO utilizadores (nome, email, password, saldo, nivel, estado) VALUES (?, ?, ?, ?, ?, ?)');
         return $stmt->execute([$name, $email, $hashedPassword, $saldo, $nivel, $estado]);
     }
+
+
+    public function getUsers() {
+        $query = "SELECT * FROM utilizadores";
+        $stmt = $this->db->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -50,7 +50,13 @@ $routes = [
     'like' => [
         'controller' => 'ItemPageController',
         'action' => 'like'
+    ],
+
+    'listar' => [
+        'controller' => 'UserController',
+        'action' => 'listUsers'
     ]
+
 ];
 
 

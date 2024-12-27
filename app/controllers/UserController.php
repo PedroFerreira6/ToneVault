@@ -18,6 +18,7 @@ class UserController
             if ($user) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['email'] = $user['email'];
+                $_SESSION['nivel'] = $user['nivel'];
 
                 header('Location: /home');
                 exit();
@@ -94,4 +95,29 @@ class UserController
             header('Location: /signup');
         }
     }
+
+    public function listUsers() {
+        require_once 'app/models/UserModel.php';
+        $userModel = new UserModel();
+
+    
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /');
+            exit;
+        }
+    
+       
+        $userLevel = $_SESSION['nivel'];
+    
+        if ($userLevel < 2) { 
+            echo "Access Denied.";
+            exit;
+        }
+    
+        
+        $users = $userModel->getUsers();
+    
+        require_once 'app/views/userListView.php';
+    }
+    
 }
