@@ -86,10 +86,12 @@ https://templatemo.com/tm-577-liberty-market
 
                                             <td>
                                             <?php
-                                            if ($user['id'] == $_SESSION['nivel']) {
+                                            if ($user['id'] == $_SESSION['user_id']) {
                                                 echo '<span class="text-muted">Cannot Edit Yourself</span>';
                                             }
-                                            elseif ($_SESSION['nivel'] != 1 && $user['nivel'] == 1) {
+                                            elseif ($_SESSION['nivel'] == 2 && $user['nivel'] == 3) {
+                                                echo '<span class="text-muted">No Access</span>';
+                                            }elseif ($_SESSION['nivel'] == 3 && $user['nivel'] == 3) {
                                                 echo '<span class="text-muted">No Access</span>';
                                             }
                                             else {
@@ -125,4 +127,3 @@ https://templatemo.com/tm-577-liberty-market
 
 
 
-<td style="color:white"><?php if($user['nivel'] == 1){ echo 'User'; }elseif($user['nivel'] == 2){ echo 'Moderator'; }if($user['nivel'] == 3){ echo 'Admin'; } ?></td>

@@ -96,28 +96,81 @@ class UserController
         }
     }
 
-    public function listUsers() {
+    public function listUsers()
+    {
         require_once 'app/models/UserModel.php';
         $userModel = new UserModel();
 
-    
+
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /');
+            header(header: 'Location: /');
             exit;
         }
-    
-       
+
+
         $userLevel = $_SESSION['nivel'];
-    
-        if ($userLevel < 2) { 
-            echo "Access Denied.";
+
+        if ($userLevel < 2) {
+            header(header: 'Location: /home');
             exit;
         }
-    
-        
+
+
         $users = $userModel->getUsers();
-    
+
         require_once 'app/views/userListView.php';
     }
-    
+
+
+
+    public function editUser()
+    {
+        require_once 'app/models/UserModel.php';
+        $userModel = new UserModel();
+
+        $userLevel = $userModel->getUserLevel($_SESSION['user_id']);
+
+        if ($userLevel == 2 || $userLevel == 3) {
+
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $userId = $_GET['id'] ?? null;
+
+                if (!$userId || !is_numeric($userId)) {
+                    echo "Invalid User ID";
+                    exit();
+                }
+
+                $user = $userModel->getUserById($userId);
+
+                if (!$user) {
+                    echo "User not found";
+                    exit();
+                }
+
+                require_once 'app/views/editUserView.php';
+            } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $userId = $_POST['id'];
+                $name = $_POST['nome'];
+                $email = $_POST['email'];
+                $saldo = $_POST['saldo'];
+                $nivel = $_POST['nivel'];
+
+                if (empty($name) || empty($email) || !is_numeric($saldo) || !is_numeric($nivel)) {
+                    echo "Invalid data provided";
+                    exit();
+                }
+
+                $userUpdated = $userModel->updateUser($userId, $name, $email, $saldo, $nivel);
+
+                if ($userUpdated) {
+                    header('Location: /listUsers');
+                    exit();
+                } else {
+                    echo "Failed to update user";
+                }
+            }
+        }else{
+            header('Location: /home');
+        }
+    }
 }

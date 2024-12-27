@@ -43,4 +43,27 @@ class UserModel {
         $stmt = $this->db->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getUserById($id)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM utilizadores WHERE id = ?');
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function updateUser($id, $name, $email, $saldo, $nivel)
+    {
+        $stmt = $this->db->prepare('UPDATE utilizadores SET nome = ?, email = ?, saldo = ?, nivel = ? WHERE id = ?');
+        return $stmt->execute([$name, $email, $saldo, $nivel, $id]);
+    }
+
+
+    public function getUserLevel($userId) {
+        $query = "SELECT nivel FROM utilizadores WHERE id = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC)['nivel'];
+    }
+
 }

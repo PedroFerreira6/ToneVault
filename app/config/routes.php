@@ -52,7 +52,7 @@ $routes = [
         'action' => 'like'
     ],
 
-    'listar' => [
+    'listUsers' => [
         'controller' => 'UserController',
         'action' => 'listUsers'
     ]
@@ -70,5 +70,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         'controller' => 'ItemPageController',
         'action' => 'edit'
     ];
+    $routes['editUser?id=' . $_GET['id']] = [
+        'controller' => 'UserController',
+        'action' => 'editUser'
+    ];  
 }
+
+
 return $routes;
