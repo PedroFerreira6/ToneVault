@@ -249,4 +249,47 @@ class AudioModel
         $stmtCheck->execute([$idUtilizador, $idAudio]);
         return $stmtCheck->fetch();
     }
+
+
+    public function listAudiosAdmin()
+    {
+        $stmt = $this->db->prepare('SELECT * FROM audios ORDER BY id DESC;');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteAudioById($id)
+{
+    try {
+        $this->db->beginTransaction();
+
+        $stmtCheck = $this->db->prepare("SELECT ficheiroEnc FROM audios WHERE id = ?");
+        $stmtCheck->execute([$id]);
+        $audio = $stmtCheck->fetch(PDO::FETCH_ASSOC);
+
+        if (!$audio) {
+            $this->db->rollBack();
+            return false; 
+        }
+
+        $this->db->prepare("DELETE FROM likes WHERE idAudio = ?")->execute([$id]);
+        $this->db->prepare("DELETE FROM views WHERE idAudio = ?")->execute([$id]);
+        $this->db->prepare("DELETE FROM compras WHERE idAudio = ?")->execute([$id]);
+
+        $stmtDelete = $this->db->prepare("DELETE FROM audios WHERE id = ?");
+        $stmtDelete->execute([$id]);
+
+        $audioFilePath = "downloads/" . $audio['ficheiroEnc'];
+        if (file_exists($audioFilePath)) {
+            unlink($audioFilePath); // Delete the file
+        }
+
+        $this->db->commit();
+        return true;
+    } catch (PDOException $e) {
+        $this->db->rollBack();
+        error_log("Error deleting audio: " . $e->getMessage());
+        return false;
+    }
+}
 }

@@ -121,6 +121,54 @@ class UserController
         require_once 'app/views/userListView.php';
     }
 
+    public function toggleUserState()
+    {
+        require_once 'app/models/UserModel.php';
+
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            header('Location: /listUsers');
+            exit;
+        }
+
+        $userId = intval($_GET['id']);
+
+        if ($_SESSION['user_id'] == $userId) {
+            echo "<script>alert('You cannot deactivate or activate yourself.')</script>";
+            header('Location: /listUsers');
+            exit;
+        }
+
+        $userModel = new UserModel();
+        $user = $userModel->getUserById($userId);
+
+        if (!$user) {
+            echo "<script>alert('User not found.')</script>";
+            header('Location: /listUsers');
+            exit;
+        }
+
+        if ($_SESSION['nivel'] == 2 && $user['nivel'] == 3) {
+            echo "<script>alert('You cannot deactivate or activate an admin.')</script>";
+            header('Location: /listUsers');
+            exit;
+        }
+
+        $newState = $user['estado'] == 1 ? 0 : 1;
+        $success = $userModel->updateUserState($userId, $newState);
+
+        if ($success) {
+            $message = $newState == 0 ? "User deactivated successfully." : "User activated successfully.";
+            echo "<script>alert('" . $message . "')</script>";
+        } else {
+            echo "<script>alert('Failed to change user state.')</script>";
+        }
+
+        header('Location: /listUsers');
+        exit;
+    }
+
+
+
 
 
     public function editUser()
@@ -169,7 +217,7 @@ class UserController
                     echo "Failed to update user";
                 }
             }
-        }else{
+        } else {
             header('Location: /home');
         }
     }

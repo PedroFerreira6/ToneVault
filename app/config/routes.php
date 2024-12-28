@@ -55,7 +55,14 @@ $routes = [
     'listUsers' => [
         'controller' => 'UserController',
         'action' => 'listUsers'
-    ]
+    ],
+
+    'listAudios' => [
+        'controller' => 'ItemPageController',
+        'action' => 'list'
+    ],
+
+  
 
 ];
 
@@ -73,7 +80,21 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $routes['editUser?id=' . $_GET['id']] = [
         'controller' => 'UserController',
         'action' => 'editUser'
-    ];  
+    ];
+    $routes['toggleUserState?id=' . $_GET['id']] = [
+        'controller' => 'UserController',
+        'action' => 'toggleUserState'
+    ];
+
+    $routes['editAudio?id=' . $_GET['id']] = [
+        'controller' => 'ItemPageController',
+        'action' => 'EditAudio'
+    ];
+
+    $routes['deleteAudio?id=' . $_GET['id']] = [
+        'controller' => 'ItemPageController',
+        'action' => 'deleteAudio'
+    ];
 }
 
 

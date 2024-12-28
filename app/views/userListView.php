@@ -96,6 +96,12 @@ https://templatemo.com/tm-577-liberty-market
                                             }
                                             else {
                                                 echo '<a href="/editUser?id=' . $user['id'] . '" class="btn btn-warning btn-sm" style="background-color:#7453fc; border-color:#7453fc;">Edit</a>';
+                                                echo ' ';
+                                                if ($user['estado'] == 1) {
+                                                    echo '<a href="/toggleUserState?id=' . $user['id'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to deactivate this user?\');">Deactivate</a>';
+                                                } else {
+                                                    echo '<a href="/toggleUserState?id=' . $user['id'] . '" class="btn btn-success btn-sm" onclick="return confirm(\'Are you sure you want to activate this user?\');">Activate</a>';
+                                                }
                                             }
                                             ?>
                                         </td>
