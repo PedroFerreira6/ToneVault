@@ -213,6 +213,7 @@ class AudioModel
             );
             $stmtCheckSaldo->execute([$idUtilizador]);
             $saldo = $stmtCheckSaldo->fetchColumn();
+
             if ($saldo >= 100) {
                 $stmtDelete = $this->db->prepare(
                     "DELETE FROM likes WHERE idUtilizador = ? AND idAudio = ?"
@@ -221,7 +222,8 @@ class AudioModel
                     $stmtUpdateSaldo = $this->db->prepare(
                         "UPDATE utilizadores SET saldo = saldo - 100 WHERE id = ?"
                     );
-                    return $stmtUpdateSaldo->execute([$idUtilizador]);
+                    $result = $stmtUpdateSaldo->execute([$idUtilizador]);
+                    return $result;
                 }
             } else {
                 return "Not enough Toins";
@@ -235,11 +237,13 @@ class AudioModel
                 $stmtUpdateSaldo = $this->db->prepare(
                     "UPDATE utilizadores SET saldo = saldo + 100 WHERE id = ?"
                 );
-                return $stmtUpdateSaldo->execute([$idUtilizador]);
+                $result = $stmtUpdateSaldo->execute([$idUtilizador]);
+                return $result;
             }
         }
         return "Error";
     }
+
 
     public function checkLike($idAudio, $idUtilizador)
     {
@@ -259,37 +263,81 @@ class AudioModel
     }
 
     public function deleteAudioById($id)
-{
-    try {
-        $this->db->beginTransaction();
+    {
+        try {
+            $this->db->beginTransaction();
 
-        $stmtCheck = $this->db->prepare("SELECT ficheiroEnc FROM audios WHERE id = ?");
-        $stmtCheck->execute([$id]);
-        $audio = $stmtCheck->fetch(PDO::FETCH_ASSOC);
+            $stmtCheck = $this->db->prepare("SELECT ficheiroEnc FROM audios WHERE id = ?");
+            $stmtCheck->execute([$id]);
+            $audio = $stmtCheck->fetch(PDO::FETCH_ASSOC);
 
-        if (!$audio) {
+            if (!$audio) {
+                $this->db->rollBack();
+                return false;
+            }
+
+            $this->db->prepare("DELETE FROM likes WHERE idAudio = ?")->execute([$id]);
+            $this->db->prepare("DELETE FROM views WHERE idAudio = ?")->execute([$id]);
+            $this->db->prepare("DELETE FROM compras WHERE idAudio = ?")->execute([$id]);
+
+            $stmtDelete = $this->db->prepare("DELETE FROM audios WHERE id = ?");
+            $stmtDelete->execute([$id]);
+
+            $audioFilePath = "downloads/" . $audio['ficheiroEnc'];
+            if (file_exists($audioFilePath)) {
+                unlink($audioFilePath); // Delete the file
+            }
+
+            $this->db->commit();
+            return true;
+        } catch (PDOException $e) {
             $this->db->rollBack();
-            return false; 
+            error_log("Error deleting audio: " . $e->getMessage());
+            return false;
         }
-
-        $this->db->prepare("DELETE FROM likes WHERE idAudio = ?")->execute([$id]);
-        $this->db->prepare("DELETE FROM views WHERE idAudio = ?")->execute([$id]);
-        $this->db->prepare("DELETE FROM compras WHERE idAudio = ?")->execute([$id]);
-
-        $stmtDelete = $this->db->prepare("DELETE FROM audios WHERE id = ?");
-        $stmtDelete->execute([$id]);
-
-        $audioFilePath = "downloads/" . $audio['ficheiroEnc'];
-        if (file_exists($audioFilePath)) {
-            unlink($audioFilePath); // Delete the file
-        }
-
-        $this->db->commit();
-        return true;
-    } catch (PDOException $e) {
-        $this->db->rollBack();
-        error_log("Error deleting audio: " . $e->getMessage());
-        return false;
     }
+
+    public function getRecentAudios($limit, $offset)
+    {
+        $query = "SELECT * FROM audios a INNER JOIN utilizadores u ON a.idUtilizador=u.id where privacidade=1 ORDER BY a.id DESC LIMIT :limit OFFSET :offset  ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function countTotalAudios()
+    {
+        $query = "SELECT COUNT(*) as total FROM audios";
+        $stmt = $this->db->query($query);
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
+    public function searchAudios($query, $limit, $offset)
+{
+    $searchQuery = "%" . $query . "%";
+    $stmt = $this->db->prepare(
+        "SELECT * FROM audios a INNER JOIN utilizadores u ON a.idUtilizador=u.id 
+        WHERE privacidade = 1 AND (a.titulo LIKE :query OR a.descricao LIKE :query) 
+        ORDER BY a.id DESC LIMIT :limit OFFSET :offset"
+    );
+    $stmt->bindValue(':query', $searchQuery, PDO::PARAM_STR);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+public function countSearchResults($query)
+{
+    $searchQuery = "%" . $query . "%";
+    $stmt = $this->db->prepare(
+        "SELECT COUNT(*) as total FROM audios 
+        WHERE privacidade = 1 AND (titulo LIKE :query OR descricao LIKE :query)"
+    );
+    $stmt->bindValue(':query', $searchQuery, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+}
+
 }

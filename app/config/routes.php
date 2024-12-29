@@ -100,12 +100,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 if (isset($_GET['s'])){
     if(isset($_GET['p'])){
-        $routes['search?id=' . $_GET['s'].''.$_GET['p']] = [
+        $routes['search?s=' . $_GET['s'].'&p='.$_GET['p']] = [
             'controller' => 'SearchController',
             'action' => 'index'
         ];
     }else{
-        $routes['search?id=' . $_GET['s']] = [
+        $routes['search?s=' . $_GET['s']] = [
             'controller' => 'SearchController',
             'action' => 'index'
         ];
