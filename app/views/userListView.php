@@ -63,6 +63,16 @@ https://templatemo.com/tm-577-liberty-market
                 <div class="col-lg-12">
                     <form id="contact">
                         <div class="table-responsive">
+                            <div class="col-lg-12">
+                                <form id="search-form" class="mb-4">
+                                    <input
+                                        type="text"
+                                        id="search-input"
+                                        class="form-control"
+                                        placeholder="Search users by name or email..."
+                                        onkeyup="filterUsers()" />
+                                </form>
+                            </div>
                             <table class="table table-striped table-hover">
                                 <thead class="table-dark">
                                     <tr>
@@ -81,38 +91,43 @@ https://templatemo.com/tm-577-liberty-market
                                             <td style="color:white"><?= htmlspecialchars($user['nome']); ?></td>
                                             <td style="color:white"><?= htmlspecialchars($user['email']); ?></td>
                                             <td style="color:white"><?= htmlspecialchars(string: $user['saldo']); ?></td>
-                                            <td style="color:white"><?php if($user['nivel'] == 1){ echo 'User'; }elseif($user['nivel'] == 2){ echo 'Moderator'; }if($user['nivel'] == 3){ echo 'Admin'; } ?></td>
-                                            
+                                            <td style="color:white"><?php if ($user['nivel'] == 1) {
+                                                                        echo 'User';
+                                                                    } elseif ($user['nivel'] == 2) {
+                                                                        echo 'Moderator';
+                                                                    }
+                                                                    if ($user['nivel'] == 3) {
+                                                                        echo 'Admin';
+                                                                    } ?></td>
+
 
                                             <td>
-                                            <?php
-                                            if ($user['id'] == $_SESSION['user_id']) {
-                                                echo '<span class="text-muted">Cannot Edit Yourself</span>';
-                                            }
-                                            elseif ($_SESSION['nivel'] == 2 && $user['nivel'] == 3) {
-                                                echo '<span class="text-muted">No Access</span>';
-                                            }elseif ($_SESSION['nivel'] == 3 && $user['nivel'] == 3) {
-                                                echo '<span class="text-muted">No Access</span>';
-                                            }
-                                            else {
-                                                echo '<a href="/editUser?id=' . $user['id'] . '" class="btn btn-warning btn-sm" style="background-color:#7453fc; border-color:#7453fc;">Edit</a>';
-                                                echo ' ';
-                                                if ($user['estado'] == 1) {
-                                                    echo '<a href="/toggleUserState?id=' . $user['id'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to deactivate this user?\');">Deactivate</a>';
+                                                <?php
+                                                if ($user['id'] == $_SESSION['user_id']) {
+                                                    echo '<span class="text-muted">Cannot Edit Yourself</span>';
+                                                } elseif ($_SESSION['nivel'] == 2 && $user['nivel'] == 3) {
+                                                    echo '<span class="text-muted">No Access</span>';
+                                                } elseif ($_SESSION['nivel'] == 3 && $user['nivel'] == 3) {
+                                                    echo '<span class="text-muted">No Access</span>';
                                                 } else {
-                                                    echo '<a href="/toggleUserState?id=' . $user['id'] . '" class="btn btn-success btn-sm" onclick="return confirm(\'Are you sure you want to activate this user?\');">Activate</a>';
+                                                    echo '<a href="/editUser?id=' . $user['id'] . '" class="btn btn-warning btn-sm" style="background-color:#7453fc; border-color:#7453fc;">Edit</a>';
+                                                    echo ' ';
+                                                    if ($user['estado'] == 1) {
+                                                        echo '<a href="/toggleUserState?id=' . $user['id'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to deactivate this user?\');">Deactivate</a>';
+                                                    } else {
+                                                        echo '<a href="/toggleUserState?id=' . $user['id'] . '" class="btn btn-success btn-sm" onclick="return confirm(\'Are you sure you want to activate this user?\');">Activate</a>';
+                                                    }
                                                 }
-                                            }
-                                            ?>
-                                        </td>
+                                                ?>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
-                        </form>
+                    </form>
                 </div>
-                
+
 
                 <div class="col-lg-7">
                     <div class="left-image">
@@ -127,9 +142,30 @@ https://templatemo.com/tm-577-liberty-market
     <?php require 'footerView.php'  ?>
 
 </body>
+<script>
+    function filterUsers() {
+        const searchValue = document
+            .getElementById("search-input")
+            .value.toLowerCase();
+
+        const tableRows = document
+            .querySelectorAll("table tbody tr");
+
+        tableRows.forEach(row => {
+            const name = row.children[1].textContent.toLowerCase(); // Name column
+            const email = row.children[2].textContent.toLowerCase(); // Email column
+
+            if (
+                name.includes(searchValue) ||
+                email.includes(searchValue)
+            ) {
+                row.style.display = ""; // Show row
+            } else {
+                row.style.display = "none"; // Hide row
+            }
+        });
+    }
+</script>
+
 
 </html>
-
-
-
-

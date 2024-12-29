@@ -50,6 +50,16 @@
                 <div class="col-lg-12">
                     <form id="contact">
                         <div class="table-responsive">
+                            <div class="col-lg-12">
+                                <form id="search-form" class="mb-4">
+                                    <input
+                                        type="text"
+                                        id="search-input"
+                                        class="form-control"
+                                        placeholder="Search audios by title or description..."
+                                        onkeyup="filterAudios()" />
+                                </form>
+                            </div>
                             <table class="table table-striped table-hover">
                                 <thead class="table-dark">
                                     <tr>
@@ -71,7 +81,7 @@
                                             <td style="color:white"><?= $audio['estado'] ? 'Ativo' : 'Inativo'; ?></td>
                                             <td>
                                                 <a href="/item?id=<?= $audio['id']; ?>" class="btn btn-info btn-sm">See</a>
-                                                <?php if ($_SESSION['user_id'] == $audio['idUtilizador'] || $_SESSION['nivel']==2 || $_SESSION['nivel']==3): ?>
+                                                <?php if ($_SESSION['user_id'] == $audio['idUtilizador'] || $_SESSION['nivel'] == 2 || $_SESSION['nivel'] == 3): ?>
                                                     <a href="/editAudio?id=<?= $audio['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                                                     <a href="/deleteAudio?id=<?= $audio['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you wish to permanetly delete this audio?');">Delete</a>
                                                 <?php endif; ?>
@@ -90,5 +100,29 @@
     <!-- Footer -->
     <?php require 'footerView.php'; ?>
 </body>
+<script>
+    function filterAudios() {
+        const searchValue = document
+            .getElementById("search-input")
+            .value.toLowerCase();
+
+        const tableRows = document
+            .querySelectorAll("table tbody tr");
+
+        tableRows.forEach(row => {
+            const title = row.children[0].textContent.toLowerCase(); 
+            const description = row.children[1].textContent.toLowerCase(); 
+
+            if (
+                title.includes(searchValue) ||
+                description.includes(searchValue)
+            ) {
+                row.style.display = ""; 
+            } else {
+                row.style.display = "none"; 
+            }
+        });
+    }
+</script>
 
 </html>
