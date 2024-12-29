@@ -99,7 +99,7 @@ class ItemPageController
                 setTimeout(function() {
                     window.location.href = '/home';
                 }, 1);
-              </script>";
+            </script>";
         }
     }
     public function like()
@@ -114,7 +114,7 @@ class ItemPageController
                         setTimeout(function() {
                             window.location.href = '/item?id={$_POST['id']}';
                         }, 1);
-                      </script>";
+                        </script>";
                 } else {
                     header("Location:/item?id={$_POST['id']}");
                 }
@@ -124,7 +124,7 @@ class ItemPageController
                 setTimeout(function() {
                     window.location.href = '/home';
                 }, 1);
-              </script>";
+                </script>";
             }
         } else {
             echo "<script>
@@ -132,7 +132,7 @@ class ItemPageController
                 setTimeout(function() {
                     window.location.href = '/home';
                 }, 1);
-              </script>";
+                </script>";
         }
     }
 
@@ -230,20 +230,20 @@ class ItemPageController
     }
 
     public function deleteAudio()
-{
-    require_once 'app/models/AudioModel.php';
-    require_once 'app/models/UserModel.php';
+    {
+        require_once 'app/models/AudioModel.php';
+        require_once 'app/models/UserModel.php';
 
-    $audioModel = new AudioModel();
-    $userModel = new UserModel();
+        $audioModel = new AudioModel();
+        $userModel = new UserModel();
 
-    $userLevel = $userModel->getUserLevel($_SESSION['user_id']);
-    if ($userLevel != 2 && $userLevel != 3) { 
-        echo "You do not have permission to delete this audio.";
-        exit();
-    }
-    
-        $audioId = $_GET['id']; 
+        $userLevel = $userModel->getUserLevel($_SESSION['user_id']);
+        if ($userLevel != 2 && $userLevel != 3) {
+            echo "You do not have permission to delete this audio.";
+            exit();
+        }
+
+        $audioId = $_GET['id'];
 
         if (!$audioId || !is_numeric($audioId)) {
             echo "Invalid Audio ID.";
@@ -254,12 +254,10 @@ class ItemPageController
 
         if ($result) {
             echo "Audio deleted successfully.";
-            
+
             header('Location: /listAudios');
         } else {
             echo "Failed to delete the audio. Please try again.";
         }
-    
-}
-
+    }
 }

@@ -233,69 +233,70 @@ https://templatemo.com/tm-577-liberty-market
                                 <source src="downloads/<?= $audio['ficheiroEnc'] ?>" type="audio/mp3">
                                 Your browser is bad (sadface)
                             </audio>
-                            <form action="/like" method="POST">
-                                <button type="submit" id="form-submit" name="id" class="main-button" value="<?= $audio['id'] ?>">
-                                    <?php
-                                    if ($checkLike) {
-                                        echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-crack"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="m12 13-1-1 2-2-3-3 2-2"/></svg> Disike (You will LOSE 100 Toins)';
-                                    } else {
-                                        echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg> Like (You will EARN 100 Toins)';
-                                    }
-                                    ?>
-                                </button>
-                            </form>
-                        </div>
-                        <fieldset>
-                            <button type="submit" id="form-submit" class="orange-button" style="width: 100%;">Confirm Edit</button>
-                        </fieldset>
-                    </div>
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="orange-button" style="width: 100%;">Confirm Edit</button>
+                            </fieldset>
+                            </fieldset>
                 </form>
-            <?php }
+                <form action="/like" method="POST"><button type="submit" id="form-submit" name="id" class="main-button" value="<?= $audio['id'] ?>">
+                        <?php
+                        if ($checkLike) {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-crack"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="m12 13-1-1 2-2-3-3 2-2"/></svg> Disike (You will LOSE 100 Toins)';
+                        } else {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg> Like (You will EARN 100 Toins)';
+                        }
+                        ?>
+                    </button></form>
+        </div>
+
+    </div>
+
+<?php }
 
             if (!empty($transactionList)) {
 
-            ?>
+?>
 
-                <div class="col-lg-12">
-                    <div class="current-bid">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="mini-heading">
-                                    <h4>Audio Rights Transactions</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                            </div>
-                            <?php foreach ($transactionList as $transaction) { ?>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="item">
-                                        <div class="left-img">
-                                            <img src="app/assets/images/current-01.jpg" alt="">
-                                        </div>
-                                        <div class="right-content">
-                                            <h4>Purchased rights</h4>
-                                            <a href="/profile?id=<?php echo $transaction['idUtilizadorIn'] ?>">By: <?php echo $transaction['nome_utilizador_in'] ?></a>
-                                            <br>
-                                            <a href="/profile?id=<?php echo $transaction['idUtilizadorOut'] ?>">From: <?php echo $transaction['nome_utilizador_out'] ?></a>
-                                            <div class="line-dec"></div>
-                                            <h6>Price: <em><?php echo $transaction['valor'] ?> Toins</em></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
+    <div class="col-lg-12">
+        <div class="current-bid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="mini-heading">
+                        <h4>Audio Rights Transactions</h4>
                     </div>
                 </div>
-
-            <?php
-            }
-            ?>
+                <div class="col-lg-6">
+                </div>
+                <?php foreach ($transactionList as $transaction) { ?>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="item">
+                            <div class="left-img">
+                                <img src="app/assets/images/current-01.jpg" alt="">
+                            </div>
+                            <div class="right-content">
+                                <h4>Purchased rights</h4>
+                                <a href="/profile?id=<?php echo $transaction['idUtilizadorIn'] ?>">By: <?php echo $transaction['nome_utilizador_in'] ?></a>
+                                <br>
+                                <a href="/profile?id=<?php echo $transaction['idUtilizadorOut'] ?>">From: <?php echo $transaction['nome_utilizador_out'] ?></a>
+                                <div class="line-dec"></div>
+                                <h6>Price: <em><?php echo $transaction['valor'] ?> Toins</em></h6>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
         </div>
     </div>
 
-    <?php
-    include_once 'footerView.php';
-    ?>
+<?php
+            }
+?>
+</div>
+</div>
+
+<?php
+include_once 'footerView.php';
+?>
 </body>
 
 </html>
