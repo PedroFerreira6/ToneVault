@@ -79,5 +79,12 @@ class UserModel
         $stmt = $this->db->prepare($sql);
         return $stmt->execute(['estado' => $newState, 'id' => $userId]);
     }
-    
+
+    public function userSaldo($userId)
+    {
+        $sql = "SELECT saldo FROM utilizadores WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['id' => $userId]); 
+        return $stmt->fetchColumn();
+    }
 }

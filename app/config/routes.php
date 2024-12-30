@@ -68,6 +68,10 @@ $routes = [
     'profile' => [
         'controller' => 'ProfileController',
         'action' => 'index'
+    ],
+    'wallet' => [
+        'controller' => 'WalletController',
+        'action' => 'index'
     ]
 ];
 
@@ -102,19 +106,20 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     ];
 }
 
-if (isset($_GET['s'])){
-    if(isset($_GET['p'])){
-        $routes['search?s=' . $_GET['s'].'&p='.$_GET['p']] = [
-            'controller' => 'SearchController',
-            'action' => 'index'
-        ];
-    }else{
-        $routes['search?s=' . $_GET['s']] = [
-            'controller' => 'SearchController',
-            'action' => 'index'
-        ];
+if (isset($_GET['s']) || isset($_GET['p'])) {
+    $query = [];
+    if (isset($_GET['s'])) {
+        $query[] = 's=' . $_GET['s'];
     }
+    if (isset($_GET['p'])) {
+        $query[] = 'p=' . $_GET['p'];
+    }
+    $routes['search?' . implode('&', $query)] = [
+        'controller' => 'SearchController',
+        'action' => 'index',
+    ];
 }
 
 
-    return $routes;
+
+return $routes;

@@ -6,7 +6,7 @@ class SearchController
     {
         if (isset($_SESSION['user_id'])) {
             $audioModel = new AudioModel();
-            $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+            $page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
             $searchQuery = isset($_GET['s']) ? trim($_GET['s']) : null;
 
             $limit = 10;

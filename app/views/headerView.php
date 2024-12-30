@@ -15,7 +15,8 @@
                         <li><a href="/search" <?php if(isset($local) && $local==1)echo 'class="active"' ?> >Search</a></li>
                         <li><a href="/upload" <?php if(isset($local) && $local==2)echo 'class="active"' ?> >Upload</a></li>
                         <li><a href="/profile" <?php if(isset($local) && $local==3)echo 'class="active"' ?>>Profile</a></li>
-                        <li><a href="/logout">logout</a></li>
+                        <li><a href="/wallet" <?php if(isset($local) && $local==4)echo 'class="active"' ?>>Wallet</a></li>
+                        <li><a href="/logout" style="background-color:#C62300;color:white">logout</a></li>
                     </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
