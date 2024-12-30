@@ -12,7 +12,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="app/assets/css/profile.css">
-    	
+    <link rel="icon" href="app/assets/images/logo/logo.svg" type="image/x-icon">
+
+<!-- Bootstrap core CSS -->
+<link href="app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="app/assets/css/fontawesome.css">
+<link rel="stylesheet" href="app/assets/css/templatemo-liberty-market.css">
+<link rel="stylesheet" href="app/assets/css/owl.css">
+<link rel="stylesheet" href="app/assets/css/animate.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     </style>
 </head>
 <body>
