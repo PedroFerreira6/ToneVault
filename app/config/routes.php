@@ -65,6 +65,10 @@ $routes = [
         'controller' => 'SearchController',
         'action' => 'index'
     ],
+    'profile' => [
+        'controller' => 'ProfileController',
+        'action' => 'index'
+    ]
 ];
 
 
