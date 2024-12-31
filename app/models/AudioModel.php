@@ -36,7 +36,13 @@ class AudioModel
 
     public function listAudiosByUser($idUtilizador)
     {
-        $stmt = $this->db->prepare('SELECT * FROM audios WHERE idUtilizador = ?');
+        $stmt = $this->db->prepare('SELECT * FROM audios WHERE idUtilizador = ? AND privacidade=1 ORDER BY id');
+        $stmt->execute([$idUtilizador]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function listMyAudios($idUtilizador)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM audios WHERE idUtilizador = ? ORDER BY id');
         $stmt->execute([$idUtilizador]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
