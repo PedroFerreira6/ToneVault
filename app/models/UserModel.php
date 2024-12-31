@@ -56,6 +56,12 @@ class UserModel
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function updatePassword($id, $newPassword)
+{
+    $hashedPassword = hash('sha256', $newPassword);
+    $stmt = $this->db->prepare('UPDATE utilizadores SET password = ? WHERE id = ?');
+    return $stmt->execute([$hashedPassword, $id]);
+} 
 
     public function updateUser($id, $name, $email, $saldo, $nivel)
     {
