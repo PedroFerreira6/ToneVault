@@ -43,10 +43,80 @@ class AudioModel
 
     public function listAudios()
     {
-        $stmt = $this->db->prepare('SELECT a.id,a.titulo,a.descricao,a.ficheiro,a.ficheiroEnc,a.valor,a.estado,u.nome FROM audios a JOIN utilizadores u ON a.idUtilizador=u.id WHERE privacidade=1 ORDER BY a.id DESC;');
+        $stmt = $this->db->prepare('SELECT a.id,a.titulo,a.descricao,a.ficheiro,a.ficheiroEnc,a.valor,a.estado,u.nome FROM audios a JOIN utilizadores u ON a.idUtilizador=u.id WHERE privacidade=1 ORDER BY a.id DESC LIMIT 6;');
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getAudiosByLikes()
+    {
+        $stmt = $this->db->prepare(
+            "SELECT a.*, u.nome, COUNT(l.idAudio) AS totalLikes
+             FROM audios a
+             LEFT JOIN likes l ON a.id = l.idAudio
+             LEFT JOIN utilizadores u ON a.idUtilizador = u.id
+             WHERE a.privacidade = 1
+             GROUP BY a.id
+             ORDER BY totalLikes DESC
+             LIMIT 6"
+        );
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAudiosByViews()
+    {
+        $stmt = $this->db->prepare(
+            "SELECT a.*, u.nome, COUNT(v.idAudio) AS totalViews
+             FROM audios a
+             LEFT JOIN views v ON a.id = v.idAudio
+             LEFT JOIN utilizadores u ON a.idUtilizador = u.id
+             WHERE a.privacidade = 1
+             GROUP BY a.id
+             ORDER BY totalViews DESC
+             LIMIT 6"
+        );
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAudiosBySales()
+    {
+        $stmt = $this->db->prepare(
+            "SELECT a.*, u.nome, COUNT(c.idAudio) AS totalSales
+             FROM audios a
+             LEFT JOIN compras c ON a.id = c.idAudio
+             LEFT JOIN utilizadores u ON a.idUtilizador = u.id
+             WHERE a.privacidade = 1
+             GROUP BY a.id
+             ORDER BY totalSales DESC
+             LIMIT 6"
+        );
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAudiosByTransfers()
+    {
+        $stmt = $this->db->prepare(
+            "SELECT a.*, u.nome, COUNT(t.idAudio) AS totalTransfers
+             FROM audios a
+             LEFT JOIN transacoesAudios t ON a.id = t.idAudio
+             LEFT JOIN utilizadores u ON a.idUtilizador = u.id
+             WHERE a.privacidade = 1
+             GROUP BY a.id
+             ORDER BY totalTransfers DESC
+             LIMIT 6"
+        );
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
+
+
+
 
     public function checkPurchase($id)
     {
@@ -314,30 +384,29 @@ class AudioModel
         return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
     }
     public function searchAudios($query, $limit, $offset)
-{
-    $searchQuery = "%" . $query . "%";
-    $stmt = $this->db->prepare(
-        "SELECT * FROM audios a INNER JOIN utilizadores u ON a.idUtilizador=u.id 
+    {
+        $searchQuery = "%" . $query . "%";
+        $stmt = $this->db->prepare(
+            "SELECT * FROM audios a INNER JOIN utilizadores u ON a.idUtilizador=u.id 
         WHERE privacidade = 1 AND (a.titulo LIKE :query OR a.descricao LIKE :query) 
         ORDER BY a.id DESC LIMIT :limit OFFSET :offset"
-    );
-    $stmt->bindValue(':query', $searchQuery, PDO::PARAM_STR);
-    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        );
+        $stmt->bindValue(':query', $searchQuery, PDO::PARAM_STR);
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-public function countSearchResults($query)
-{
-    $searchQuery = "%" . $query . "%";
-    $stmt = $this->db->prepare(
-        "SELECT COUNT(*) as total FROM audios 
+    public function countSearchResults($query)
+    {
+        $searchQuery = "%" . $query . "%";
+        $stmt = $this->db->prepare(
+            "SELECT COUNT(*) as total FROM audios 
         WHERE privacidade = 1 AND (titulo LIKE :query OR descricao LIKE :query)"
-    );
-    $stmt->bindValue(':query', $searchQuery, PDO::PARAM_STR);
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
-}
-
+        );
+        $stmt->bindValue(':query', $searchQuery, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
 }

@@ -135,10 +135,11 @@ https://templatemo.com/tm-577-liberty-market
   <div class="currently-market">
     <div class="container">
       <div class="row">
+        <!-- -->
         <div class="col-lg-6">
           <div class="section-heading">
             <div class="line-dec"></div>
-            <h2><em>Items</em> on the market.</h2>
+            <h2><em>Latest Items</em> on the market.</h2>
           </div>
         </div>
         <div class="col-lg-12">
@@ -177,6 +178,184 @@ https://templatemo.com/tm-577-liberty-market
             <?php } ?>
           </div>
         </div>
+
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2><em>Most Liked</em> on the market.</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="row grid">
+            <!-- Isto é o começo do item -->
+            <?php
+            foreach ($audiosByLikes as $audio) {
+            ?>
+              <div class="col-lg-6 currently-market-item all msc">
+                <div class="item">
+                  <div class="left-image">
+                    <img src="app/assets/images/MusicImage.png" alt="" style="border-radius: 20px; min-width: 195px;max-height:300px">
+                  </div>
+                  <div class="right-content">
+                    <h4><?= $audio['titulo']; ?></h4>
+                    <span class="author">
+                      <h6><?= $audio['nome']; ?><br><a href="perfil"></h6>
+                    </span>
+                    <div class="line-dec"></div>
+                    <span class="bid">
+                      Listen for<br><strong><?= $audio['valor']; ?> Toins</strong><br>
+                    </span>
+                    <span class="ends">
+                      <?php if ($audio['estado'] == 0) echo "<br><strong>Buy just to listen</strong><br>";
+                      else echo "<br><strong>Purchase rights</strong><br>";
+                      ?>
+                    </span>
+                    <div class="text-button">
+                      <a href="/item?id=<?= $audio['id']; ?>">View Details</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Isto é o FIM do item -->
+
+            <?php } ?>
+          </div>
+        </div>
+
+        <!-- -->
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2><em>Most Viewed Items</em> on the market.</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="row grid">
+            <!-- Isto é o começo do item -->
+            <?php
+            foreach ($audiosByViews as $audio) {
+            ?>
+              <div class="col-lg-6 currently-market-item all msc">
+                <div class="item">
+                  <div class="left-image">
+                    <img src="app/assets/images/MusicImage.png" alt="" style="border-radius: 20px; min-width: 195px;max-height:300px">
+                  </div>
+                  <div class="right-content">
+                    <h4><?= $audio['titulo']; ?></h4>
+                    <span class="author">
+                      <h6><?= $audio['nome']; ?><br><a href="perfil"></h6>
+                    </span>
+                    <div class="line-dec"></div>
+                    <span class="bid">
+                      Listen for<br><strong><?= $audio['valor']; ?> Toins</strong><br>
+                    </span>
+                    <span class="ends">
+                      <?php if ($audio['estado'] == 0) echo "<br><strong>Buy just to listen</strong><br>";
+                      else echo "<br><strong>Purchase rights</strong><br>";
+                      ?>
+                    </span>
+                    <div class="text-button">
+                      <a href="/item?id=<?= $audio['id']; ?>">View Details</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Isto é o FIM do item -->
+
+            <?php } ?>
+          </div>
+        </div>
+
+        <!-- -->
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2><em>Most Bought Items</em> on the market.</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="row grid">
+            <!-- Isto é o começo do item -->
+            <?php
+            foreach ($audiosBySales as $audio) {
+            ?>
+              <div class="col-lg-6 currently-market-item all msc">
+                <div class="item">
+                  <div class="left-image">
+                    <img src="app/assets/images/MusicImage.png" alt="" style="border-radius: 20px; min-width: 195px;max-height:300px">
+                  </div>
+                  <div class="right-content">
+                    <h4><?= $audio['titulo']; ?></h4>
+                    <span class="author">
+                      <h6><?= $audio['nome']; ?><br><a href="perfil"></h6>
+                    </span>
+                    <div class="line-dec"></div>
+                    <span class="bid">
+                      Listen for<br><strong><?= $audio['valor']; ?> Toins</strong><br>
+                    </span>
+                    <span class="ends">
+                      <?php if ($audio['estado'] == 0) echo "<br><strong>Buy just to listen</strong><br>";
+                      else echo "<br><strong>Purchase rights</strong><br>";
+                      ?>
+                    </span>
+                    <div class="text-button">
+                      <a href="/item?id=<?= $audio['id']; ?>">View Details</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Isto é o FIM do item -->
+
+            <?php } ?>
+          </div>
+        </div>
+
+       
+        <!-- -->
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2><em>Most transferred Items</em> on the market.</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="row grid">
+            <!-- Isto é o começo do item -->
+            <?php
+            foreach ($audiosByTransfers as $audio) {
+            ?>
+              <div class="col-lg-6 currently-market-item all msc">
+                <div class="item">
+                  <div class="left-image">
+                    <img src="app/assets/images/MusicImage.png" alt="" style="border-radius: 20px; min-width: 195px;max-height:300px">
+                  </div>
+                  <div class="right-content">
+                    <h4><?= $audio['titulo']; ?></h4>
+                    <span class="author">
+                      <h6><?= $audio['nome']; ?><br><a href="perfil"></h6>
+                    </span>
+                    <div class="line-dec"></div>
+                    <span class="bid">
+                      Listen for<br><strong><?= $audio['valor']; ?> Toins</strong><br>
+                    </span>
+                    <span class="ends">
+                      <?php if ($audio['estado'] == 0) echo "<br><strong>Buy just to listen</strong><br>";
+                      else echo "<br><strong>Purchase rights</strong><br>";
+                      ?>
+                    </span>
+                    <div class="text-button">
+                      <a href="/item?id=<?= $audio['id']; ?>">View Details</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Isto é o FIM do item -->
+
+            <?php } ?>
+          </div>
+        </div>
+
+        <!-- -->
       </div>
     </div>
   </div>

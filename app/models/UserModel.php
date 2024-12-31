@@ -160,6 +160,8 @@ class UserModel
             utilizadores u ON c.idUtilizador = u.id
         WHERE 
             a.idUtilizador = :userId
+        ORDER BY
+        c.id DESC
     ";
 
         $stmt = $this->db->prepare($query);
@@ -185,6 +187,8 @@ class UserModel
             utilizadores u ON t.idUtilizadorIn = u.id
         WHERE 
             t.idUtilizadorOut = :userId
+        ORDER BY
+        t.id DESC
     ";
 
         $stmt = $this->db->prepare($query);
