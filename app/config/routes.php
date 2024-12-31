@@ -51,6 +51,10 @@ $routes = [
         'controller' => 'ItemPageController',
         'action' => 'like'
     ],
+    'delete' => [
+        'controller' => 'ItemPageController',
+        'action' => 'delete'
+    ],
 
     'listUsers' => [
         'controller' => 'UserController',

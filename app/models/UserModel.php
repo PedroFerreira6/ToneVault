@@ -84,7 +84,113 @@ class UserModel
     {
         $sql = "SELECT saldo FROM utilizadores WHERE id = :id";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(['id' => $userId]); 
+        $stmt->execute(['id' => $userId]);
         return $stmt->fetchColumn();
+    }
+
+    public function getComprasByUserId($userId)
+    {
+        $query = "
+        SELECT 
+            c.id AS compra_id,
+            c.valor AS valor_compra,
+            a.id AS audio_id,
+            a.titulo AS titulo_audio,
+            u.nome AS nome_dono_audio
+        FROM 
+            compras c
+        JOIN 
+            audios a ON c.idAudio = a.id
+        JOIN 
+            utilizadores u ON a.idUtilizador = u.id
+        WHERE 
+            c.idUtilizador = :userId
+        ORDER BY
+        c.id DESC
+    ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getTransacoesByUserId($userId)
+    {
+        $query = "
+        SELECT 
+            t.id AS transacao_id,
+            t.valor AS valor_transacao,
+            a.id AS audio_id,
+            a.titulo AS titulo_audio,
+            u.nome AS nome_antigo_dono
+        FROM 
+            transacoesAudios t
+        JOIN 
+            audios a ON t.idAudio = a.id
+        JOIN 
+            utilizadores u ON t.idUtilizadorOut = u.id
+        WHERE 
+            t.idUtilizadorIn = :userId
+        ORDER BY
+        t.id DESC
+    ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getGanhosDeComprasByUserId($userId)
+    {
+        $query = "
+        SELECT 
+            c.id AS compra_id,
+            c.valor AS valor_compra,
+            a.id AS audio_id,
+            a.titulo AS titulo_audio,
+            u.nome AS nome_comprador
+        FROM 
+            compras c
+        JOIN 
+            audios a ON c.idAudio = a.id
+        JOIN 
+            utilizadores u ON c.idUtilizador = u.id
+        WHERE 
+            a.idUtilizador = :userId
+    ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getGanhosDeTransacoesByUserId($userId)
+    {
+        $query = "
+        SELECT 
+            t.id AS transacao_id,
+            t.valor AS valor_transacao,
+            a.id AS audio_id,
+            a.titulo AS titulo_audio,
+            u.nome AS nome_comprador
+        FROM 
+            transacoesAudios t
+        JOIN 
+            audios a ON t.idAudio = a.id
+        JOIN 
+            utilizadores u ON t.idUtilizadorIn = u.id
+        WHERE 
+            t.idUtilizadorOut = :userId
+    ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

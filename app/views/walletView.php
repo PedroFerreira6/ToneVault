@@ -42,171 +42,187 @@
     $local = 4;
     include_once 'headerView.php';
     ?>
+    <div class="page-heading normal-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6>Wallet</h6>
+                    <h2>View The Details Of Your Wallet</h2>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="author-page">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="author">
                         <img src="app/assets/images/logo/Toin.png" alt="" style="border-radius: 50%; max-width: 170px;">
-                        <h4><?= $saldo ?> <em>Toins</em></h4>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="right-info">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="info-item">
-                                    <i class="fa fa-heart"></i>
-                                    <h6>1238 <em>Likes</em></h6>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="info-item">
-                                    <i class="fa fa-hand"></i>
-                                    <h6>1238 <em>Likes</em></h6>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="info-item">
-                                    <i class="fa fa-dollar"></i>
-                                    <h6>1238 <em>Likes</em></h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-5">
-                                <h5>559 Followers</h5>
-                            </div>
-                            <div class="col-7">
-                                <div class="main-button">
-                                    <a href="#">Follow @melanie32</a>
-                                </div>
-                            </div>
-                        </div>
+                        <h4 style="font-size:40px"><?= $saldo ?> <em style="color:#7453fc;">Toins</em></h4>
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="section-heading">
                         <div class="line-dec"></div>
-                        <h2>Melanie Smith’s <em>Items</em>.</h2>
+                        <h2>Your Purchase History.<em>(When You Buy)</em></h2>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <span class="author">
-                                    <img src="assets/images/author.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-                                </span>
-                                <img src="assets/images/discover-03.jpg" alt="" style="border-radius: 20px;">
-                                <h4>Mutant Ape Bored</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="line-dec"></div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <span>Current Bid: <br> <strong>2.03 ETH</strong></span>
-                                    </div>
-                                    <div class="col-6">
-                                        <span>Ends In: <br> <strong>25th Nov</strong></span>
+                <?php foreach ($compras as $compra) { ?>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <span class="author">
+                                        <img src="app/assets/images/author.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
+                                    </span>
+                                    <img src="app/assets/images/discover-03.jpg" alt="" style="border-radius: 20px;">
+                                    <h4><?= $compra['titulo_audio'] ?></h4>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="line-dec"></div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span>Price: <br> <strong><?= $compra['valor_compra'] ?> Toins</strong></span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>User: <br> <strong><?= $compra['nome_dono_audio'] ?></strong></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="main-button">
-                                    <a href="details.html">View Details</a>
+                                <div class="col-lg-12">
+                                    <div class="main-button">
+                                        <a href="/item?id=<?= $compra['audio_id'] ?>">View Details</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                <?php } ?>
+
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h2>Your Transaction History.<em>(When You buy)</em></h2>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <span class="author">
-                                    <img src="assets/images/author-02.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-                                </span>
-                                <img src="assets/images/discover-06.jpg" alt="" style="border-radius: 20px;">
-                                <h4>Mutant Ape Bored</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="line-dec"></div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <span>Current Bid: <br> <strong>2.03 ETH</strong></span>
-                                    </div>
-                                    <div class="col-6">
-                                        <span>Ends In: <br> <strong>25th Nov</strong></span>
+                <?php foreach ($transacoes as $transacao) { ?>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <span class="author">
+                                        <img src="app/assets/images/author.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
+                                    </span>
+                                    <img src="app/assets/images/discover-03.jpg" alt="" style="border-radius: 20px;">
+                                    <h4><?= $transacao['titulo_audio'] ?></h4>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="line-dec"></div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span>Price: <br> <strong><?= $transacao['valor_transacao'] ?> Toins</strong></span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>User: <br> <strong><?= $transacao['nome_antigo_dono'] ?></strong></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="main-button">
-                                    <a href="details.html">View Details</a>
+                                <div class="col-lg-12">
+                                    <div class="main-button">
+                                        <a href="/item?id=<?= $transacao['audio_id'] ?>">View Details</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                <?php } ?>
+
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h2>Your Purchase History.<em>(When sold)</em></h2>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <span class="author">
-                                    <img src="assets/images/author.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-                                </span>
-                                <img src="assets/images/discover-05.jpg" alt="" style="border-radius: 20px;">
-                                <h4>Mutant Ape Bored</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="line-dec"></div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <span>Current Bid: <br> <strong>2.03 ETH</strong></span>
-                                    </div>
-                                    <div class="col-6">
-                                        <span>Ends In: <br> <strong>25th Nov</strong></span>
+                <?php foreach ($ganhosCompras as $ganhosCompra) { ?>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <span class="author">
+                                        <img src="app/assets/images/author.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
+                                    </span>
+                                    <img src="app/assets/images/discover-03.jpg" alt="" style="border-radius: 20px;">
+                                    <h4><?= $ganhosCompra['titulo_audio'] ?></h4>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="line-dec"></div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span>Price: <br> <strong><?= $ganhosCompra['valor_compra'] ?> Toins</strong></span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>User: <br> <strong><?= $ganhosCompra['nome_comprador'] ?></strong></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="main-button">
-                                    <a href="details.html">View Details</a>
+                                <div class="col-lg-12">
+                                    <div class="main-button">
+                                        <a href="/item?id=<?= $ganhosCompra['audio_id'] ?>">View Details</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <span class="author">
-                                    <img src="assets/images/author-03.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-                                </span>
-                                <img src="assets/images/discover-04.jpg" alt="" style="border-radius: 20px;">
-                                <h4>Mutant Ape Bored</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="line-dec"></div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <span>Current Bid: <br> <strong>2.03 ETH</strong></span>
-                                    </div>
-                                    <div class="col-6">
-                                        <span>Ends In: <br> <strong>25th Nov</strong></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="main-button">
-                                    <a href="details.html">View Details</a>
-                                </div>
-                            </div>
-                        </div>
+                <?php } ?>
+
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h2>Your Transaction History.<em>(When sold)</em></h2>
                     </div>
                 </div>
+                <?php foreach ($ganhosTransacoes as $ganhosTransacoe) { ?>
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="item">
+
+                            <div class="row">
+
+                                <div class="col-lg-12">
+                                    <span class="author">
+                                        <img src="app/assets/images/author.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
+                                    </span>
+                                    <img src="app/assets/images/discover-03.jpg" alt="" style="border-radius: 20px;">
+                                    <h4><?= $ganhosTransacoe['titulo_audio'] ?></h4>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="line-dec"></div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span>Price: <br> <strong><?= $ganhosTransacoe['valor_transacao'] ?> Toins</strong></span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>User: <br> <strong><?= $ganhosTransacoe['nome_comprador'] ?></strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="main-button">
+                                        <a href="/item?id=<?= $ganhosTransacoe['audio_id'] ?>">View Details</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                <?php } ?>
+
             </div>
         </div>
     </div>

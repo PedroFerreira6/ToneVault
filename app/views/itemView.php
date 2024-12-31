@@ -238,7 +238,10 @@ https://templatemo.com/tm-577-liberty-market
                             </fieldset>
                             </fieldset>
                 </form>
-                <form action="/like" method="POST"><button type="submit" id="form-submit" name="id" class="main-button" value="<?= $audio['id'] ?>">
+                <form style="margin:2px;" action="/delete" method="POST"><button onclick="if(!confirm('Are you sure you want to delete this audio permanently?')) event.preventDefault();" style="background-color:#C62300" type="submit" id="form-submit" name="id" class="main-button" value="<?= $audio['id'] ?>">
+                    DELETE(PERMANENT)
+                    </button></form>
+                <form action="/like" style="margin:2px;" method="POST"><button type="submit" id="form-submit" name="id" class="main-button" value="<?= $audio['id'] ?>">
                         <?php
                         if ($checkLike) {
                             echo '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-crack"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="m12 13-1-1 2-2-3-3 2-2"/></svg> Disike (You will LOSE 100 Toins)';

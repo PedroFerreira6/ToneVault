@@ -63,8 +63,23 @@ class ItemPageController
                     $estado
                 );
 
-                echo "Ficheiro enviado e registado com sucesso.";
+                echo "Success.";
                 header("Location:/item?id={$_GET['id']}");
+            }
+        }
+    }
+        public function delete()
+    {
+        if (isset($_SESSION['user_id'])) {
+            if (isset($_POST['id']) && is_numeric($_POST['id'])) {
+                $audioModel = new AudioModel();
+                $audio = $audioModel->getAudioById($_POST['id']);
+                if($audio['idUtilizador']==$_SESSION['user_id']){
+                    $audio = $audioModel->deleteAudioById($_POST['id']);
+                    echo "Success.";
+                    header("Location:/profile");
+                }
+
             }
         }
     }

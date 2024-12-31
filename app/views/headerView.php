@@ -11,7 +11,7 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="/home" <?php if(!isset($local))echo 'class="active"'; ?> >Inicio</a></li>
+                        <li><a href="/home" <?php if(!isset($local))echo 'class="active"'; ?> >Home</a></li>
                         <li><a href="/search" <?php if(isset($local) && $local==1)echo 'class="active"' ?> >Search</a></li>
                         <li><a href="/upload" <?php if(isset($local) && $local==2)echo 'class="active"' ?> >Upload</a></li>
                         <li><a href="/profile" <?php if(isset($local) && $local==3)echo 'class="active"' ?>>Profile</a></li>
