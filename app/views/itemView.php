@@ -97,7 +97,7 @@ https://templatemo.com/tm-577-liberty-market
                     <div class="col-lg-5 align-self-center">
                         <h2><?= $audio['titulo'] ?></h2>
                         <span class="author">
-                            <h3><a href="#"><?= $audio['nome'] ?></a></h3>
+                            <h3><a href="/profile?id=<?= $audio['idUtilizador'] ?>"><?= $audio['nome'] ?></a></h3>
                         </span>
                         <p><?= $audio['descricao'] ?></p>
                         <?php if (($audio['estado'] == 1) || ($audio['estado'] == 0 && $audio['valor'] == 0) || ($check['result'] == "true")) { ?>

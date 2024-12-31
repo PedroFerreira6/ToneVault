@@ -36,7 +36,16 @@
       <?php
       $local = 3;
       include_once 'headerView.php'; ?>
-
+      <div class="page-heading normal-space">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h6>Profile</h6>
+              <h2>View The Details Of This Profile</h2>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="author-page">
         <div class="container">
           <div class="row">
@@ -50,111 +59,44 @@
             <?php
             if (!isset($_GET['id'])) {
             ?>
-              <div class="col-12">
-                <form id="contact" action="/upload/start" enctype="multipart/form-data" method="post" style="width: 100%;">
+              <div class="col-lg-12">
+                <div class="section-heading">
+                  <div class="line-dec"></div>
+                  <h2>Change <em>Password</em>.</h2>
+                </div>
+              </div>
+              <div class="col-12" style="margin-bottom:0;
+              ">
+                <form id="contact" action="/profile/editPassword" enctype="multipart/form-data" method="post" style="width: 100%;">
                   <div class="row">
                     <div class="col-12" style="width: 100%;">
                       <fieldset>
-                        <label for="title">Title</label>
-                        <input type="text" name="title" id="title" placeholder="Ex. Lyon King" style="width: 100%;" autocomplete="on" required="">
+                        <label for="title">Password</label>
+                        <input type="password" name="password" id="title" placeholder="Password" style="width: 100%;" autocomplete="on" required="">
                       </fieldset>
                     </div>
                     <div class="col-12" style="width: 100%;">
                       <fieldset>
-                        <label for="description">Description</label><br>
-                        <textarea name="description" id="description" placeholder="Give us your idea" style="
-    background-color: rgb(40, 43, 47);
-    border: 1px solid rgb(64, 66, 69);
-    border-radius: 23px;
-    color: rgb(175, 175, 175);
-    cursor: text;
-    display: inline-block;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: normal;
-    line-height: 24px;
-    margin-bottom: 30px;
-    margin-right: 15px;
-    outline: none;
-    padding: 0 15px;
-    text-align: left;
-    width: 100%; 
-    " autocomplete="on" required=""></textarea>
-                      </fieldset>
-                    </div>
-                    <div class="col-12" style="width: 100%;">
-                      <fieldset>
-                        <label for="price">Price Of Item</label>
-                        <input type="number" name="price" id="price" placeholder="0 Toins" style="width: 100%;" autocomplete="on" required="">
+                        <label for="title">Confirm Password</label>
+                        <input type="password" name="password" id="title" placeholder="Confirm Pasword" style="width: 100%;" autocomplete="on" required="">
                       </fieldset>
                     </div>
                     <br>
                     <div class="col-12" style="width: 100%;">
                       <fieldset>
-                        <label for="privacy">Privacy</label>
-                        <select name="privacy" class="form-select" style="
-    background-color: rgb(40, 43, 47);
-    border: 1px solid rgb(64, 66, 69);
-    border-radius: 23px;
-    color: rgb(175, 175, 175);
-    cursor: text;
+                        <button type="submit" id="form-submit" class="orange-button" style="width: 100%;    font-size: 14px;
+    color: #fff;
+    background-color: #7453fc;
+    border: 1px solid #7453fc;
+    padding: 12px 30px;
     display: inline-block;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    border-radius: 25px;
     font-weight: 500;
-    letter-spacing: normal;
-    line-height: 24px;
-    margin-bottom: 30px;
-    margin-right: 15px;
-    outline: none;
-    padding: 0 15px;
-    text-align: left;
-    width: 100%; 
-    ">
-                          <option value="0">Private</option>
-                          <option value="1">Public</option>
-                        </select>
-                      </fieldset>
-                    </div>
-                    <br>
-                    <div class="col-12" style="width: 100%;">
-                      <fieldset>
-                        <label for="listing-type">Listing Type</label>
-                        <select name="listing_type" class="form-select" style="
-    background-color: rgb(40, 43, 47);
-    border: 1px solid rgb(64, 66, 69);
-    border-radius: 23px;
-    color: rgb(175, 175, 175);
-    cursor: text;
-    display: inline-block;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: normal;
-    line-height: 24px;
-    margin-bottom: 30px;
-    margin-right: 15px;
-    outline: none;
-    padding: 0 15px;
-    text-align: left;
-    width: 100%; 
-    ">
-                          <option value="0">Only For Listening</option>
-                          <option value="1">Sell The Audio Rights</option>
-                        </select>
-                      </fieldset>
-                    </div>
-                    <br>
-                    <div class="col-12" style="width: 100%;">
-                      <fieldset>
-                        <label for="file">Your File</label>
-                        <input type="file" id="file" name="myfile" style="width: 100%;" accept="audio/mp3">
-                      </fieldset>
-                    </div>
-                    <div class="col-12" style="width: 100%;">
-                      <fieldset>
-                        <button type="submit" id="form-submit" class="orange-button" style="width: 100%;">Publish</button>
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;">Publish</button>
                       </fieldset>
                     </div>
                   </div>
