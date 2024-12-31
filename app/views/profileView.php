@@ -1,281 +1,222 @@
     <?php
 
     ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-  <head>
+    <head>
 
-    <meta charset="utf-8">
-    <meta name="author" content="templatemo">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta charset="utf-8">
+      <meta name="author" content="templatemo">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <title>Liberty NFT - Author Detail Page</title>
+      <title>ToneVault</title>
+      <link rel="icon" href="app/assets/images/logo/logo.svg" type="image/x-icon">
 
-    <!-- Bootstrap core CSS -->
-    <link href="app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Bootstrap core CSS -->
+      <link href="app/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="app/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="app/assets/css/templatemo-liberty-market.css">
-    <link rel="stylesheet" href="app/assets/css/owl.css">
-    <link rel="stylesheet" href="app/assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-<!--
+      <!-- Additional CSS Files -->
+      <link rel="stylesheet" href="app/assets/css/fontawesome.css">
+      <link rel="stylesheet" href="app/assets/css/templatemo-liberty-market.css">
+      <link rel="stylesheet" href="app/assets/css/owl.css">
+      <link rel="stylesheet" href="app/assets/css/animate.css">
+      <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+      <!--
 
 -->
-  </head>
+    </head>
 
-<body>
+    <body>
 
- 
-<?php include_once 'headerView.php'; ?>
 
-  <div class="author-page">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="author">
-            <img src="app/assets/images/single-author.jpg" alt="" style="border-radius: 50%; max-width: 170px;">
-            <h4><?php $userId;?><br> <a href="#">@melanie32</a></h4>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="right-info">
-            <div class="row">
-              <div class="col-4">
-                <div class="info-item">
-                  <i class="fa fa-heart"></i>
-                  <h6>1238 <em>Likes</em></h6>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="info-item">
-                  <i class="fa fa-hand"></i>
-                  <h6>1238 <em>Likes</em></h6>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="info-item">
-                  <i class="fa fa-dollar"></i>
-                  <h6>1238 <em>Likes</em></h6>
-                </div>
+      <?php
+      $local = 3;
+      include_once 'headerView.php'; ?>
+
+      <div class="author-page">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="author">
+                <img src="app/assets/images/single-author.jpg" alt="" style="border-radius: 50%; max-width: 170px;">
+                <h4><?php echo $userData['nome']; ?><br> <a href="#"><?php echo $userData['email']; ?></a></h4>
               </div>
             </div>
-            <div class="row">
-              <div class="col-5">
-                <h5>559 Followers</h5>
+
+            <?php
+            if (!isset($_GET['id'])) {
+            ?>
+              <div class="col-12">
+                <form id="contact" action="/upload/start" enctype="multipart/form-data" method="post" style="width: 100%;">
+                  <div class="row">
+                    <div class="col-12" style="width: 100%;">
+                      <fieldset>
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" placeholder="Ex. Lyon King" style="width: 100%;" autocomplete="on" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-12" style="width: 100%;">
+                      <fieldset>
+                        <label for="description">Description</label><br>
+                        <textarea name="description" id="description" placeholder="Give us your idea" style="
+    background-color: rgb(40, 43, 47);
+    border: 1px solid rgb(64, 66, 69);
+    border-radius: 23px;
+    color: rgb(175, 175, 175);
+    cursor: text;
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 24px;
+    margin-bottom: 30px;
+    margin-right: 15px;
+    outline: none;
+    padding: 0 15px;
+    text-align: left;
+    width: 100%; 
+    " autocomplete="on" required=""></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="col-12" style="width: 100%;">
+                      <fieldset>
+                        <label for="price">Price Of Item</label>
+                        <input type="number" name="price" id="price" placeholder="0 Toins" style="width: 100%;" autocomplete="on" required="">
+                      </fieldset>
+                    </div>
+                    <br>
+                    <div class="col-12" style="width: 100%;">
+                      <fieldset>
+                        <label for="privacy">Privacy</label>
+                        <select name="privacy" class="form-select" style="
+    background-color: rgb(40, 43, 47);
+    border: 1px solid rgb(64, 66, 69);
+    border-radius: 23px;
+    color: rgb(175, 175, 175);
+    cursor: text;
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 24px;
+    margin-bottom: 30px;
+    margin-right: 15px;
+    outline: none;
+    padding: 0 15px;
+    text-align: left;
+    width: 100%; 
+    ">
+                          <option value="0">Private</option>
+                          <option value="1">Public</option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <br>
+                    <div class="col-12" style="width: 100%;">
+                      <fieldset>
+                        <label for="listing-type">Listing Type</label>
+                        <select name="listing_type" class="form-select" style="
+    background-color: rgb(40, 43, 47);
+    border: 1px solid rgb(64, 66, 69);
+    border-radius: 23px;
+    color: rgb(175, 175, 175);
+    cursor: text;
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 24px;
+    margin-bottom: 30px;
+    margin-right: 15px;
+    outline: none;
+    padding: 0 15px;
+    text-align: left;
+    width: 100%; 
+    ">
+                          <option value="0">Only For Listening</option>
+                          <option value="1">Sell The Audio Rights</option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <br>
+                    <div class="col-12" style="width: 100%;">
+                      <fieldset>
+                        <label for="file">Your File</label>
+                        <input type="file" id="file" name="myfile" style="width: 100%;" accept="audio/mp3">
+                      </fieldset>
+                    </div>
+                    <div class="col-12" style="width: 100%;">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="orange-button" style="width: 100%;">Publish</button>
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <div class="col-7">
-                <div class="main-button">
-                  <a href="#">Follow @melanie32</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h2>Melanie Smith’s <em>Items</em>.</h2>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="item">
-            <div class="row">
-              <div class="col-lg-12">
-                <span class="author">
-                  <img src="app/assets/images/author.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-                </span>
-                <img src="app/assets/images/discover-03.jpg" alt="" style="border-radius: 20px;">
-                <h4>Mutant Ape Bored</h4>
-              </div>
-              <div class="col-lg-12">
+            <?php
+            }
+            ?>
+            <div class="col-lg-12">
+              <div class="section-heading">
                 <div class="line-dec"></div>
-                <div class="row">
-                  <div class="col-6">
-                    <span>Current Bid: <br> <strong>2.03 ETH</strong></span>
-                  </div>
-                  <div class="col-6">
-                    <span>Ends In: <br> <strong>25th Nov</strong></span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="main-button">
-                  <a href="details.html">View Details</a>
-                </div>
+                <h2>My <em>Items</em>.</h2>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="item">
-            <div class="row">
-              <div class="col-lg-12">
-                <span class="author">
-                  <img src="app/assets/images/author-02.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-                </span>
-                <img src="app/assets/images/discover-06.jpg" alt="" style="border-radius: 20px;">
-                <h4>Mutant Ape Bored</h4>
-              </div>
-              <div class="col-lg-12">
-                <div class="line-dec"></div>
-                <div class="row">
-                  <div class="col-6">
-                    <span>Current Bid: <br> <strong>2.03 ETH</strong></span>
-                  </div>
-                  <div class="col-6">
-                    <span>Ends In: <br> <strong>25th Nov</strong></span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="main-button">
-                  <a href="details.html">View Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="item">
-            <div class="row">
-              <div class="col-lg-12">
-                <span class="author">
-                  <img src="app/assets/images/author.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-                </span>
-                <img src="app/assets/images/discover-05.jpg" alt="" style="border-radius: 20px;">
-                <h4>Mutant Ape Bored</h4>
-              </div>
-              <div class="col-lg-12">
-                <div class="line-dec"></div>
-                <div class="row">
-                  <div class="col-6">
-                    <span>Current Bid: <br> <strong>2.03 ETH</strong></span>
-                  </div>
-                  <div class="col-6">
-                    <span>Ends In: <br> <strong>25th Nov</strong></span>
+
+            <?php foreach ($audioData as $audio) { ?>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="item">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <span class="author">
+                        <img src="app/assets/images/author.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
+                      </span>
+                      <img src="app/assets/images/discover-03.jpg" alt="" style="border-radius: 20px;">
+                      <h4><?= $audio['titulo'] ?></h4>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="line-dec"></div>
+                      <div class="row">
+                        <div class="col-6">
+                          <span>Price: <br> <strong><?= $audio['valor'] ?> Toins</strong></span>
+                        </div>
+                        <div class="col-6">
+                          <span>User: <br> <strong><?= $userData['nome'] ?></strong></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="main-button">
+                        <a href="/item?id=<?= $audio['id'] ?>">View Details</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-12">
-                <div class="main-button">
-                  <a href="details.html">View Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="item">
-            <div class="row">
-              <div class="col-lg-12">
-                <span class="author">
-                  <img src="app/assets/images/author-03.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-                </span>
-                <img src="app/assets/images/discover-04.jpg" alt="" style="border-radius: 20px;">
-                <h4>Mutant Ape Bored</h4>
-              </div>
-              <div class="col-lg-12">
-                <div class="line-dec"></div>
-                <div class="row">
-                  <div class="col-6">
-                    <span>Current Bid: <br> <strong>2.03 ETH</strong></span>
-                  </div>
-                  <div class="col-6">
-                    <span>Ends In: <br> <strong>25th Nov</strong></span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="main-button">
-                  <a href="details.html">View Details</a>
-                </div>
-              </div>
-            </div>
+            <?php } ?>
+
+
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="create-nft">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h2>Create Your NFT & Put It On The Market.</h2>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="main-button">
-            <a href="create.html">Create Your NFT Now</a>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item first-item">
-            <div class="number">
-              <h6>1</h6>
-            </div>
-            <div class="icon">
-              <img src="app/assets/images/icon-02.png" alt="">
-            </div>
-            <h4>Set Up Your Wallet</h4>
-            <p>Lorem ipsum dolor sit amet, consectetu dipiscingei elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item second-item">
-            <div class="number">
-              <h6>2</h6>
-            </div>
-            <div class="icon">
-              <img src="app/assets/images/icon-04.png" alt="">
-            </div>
-            <h4>Add Your Digital NFT</h4>
-            <p>Lorem ipsum dolor sit amet, consectetu dipiscingei elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="icon">
-              <img src="app/assets/images/icon-06.png" alt="">
-            </div>
-            <h4>Sell Your NFT &amp; Make Profit</h4>
-            <p>Lorem ipsum dolor sit amet, consectetu dipiscingei elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-        </div>
       </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © 2022 <a href="#">Liberty</a> NFT Marketplace Co., Ltd. All rights reserved.
-          &nbsp;&nbsp;
-          Designed by <a title="HTML CSS Templates" rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
-        </div>
       </div>
-    </div>
-  </footer>
+      </div>
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="app/vendor/jquery/jquery.min.js"></script>
-  <script src="app/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-  <script src="app/assets/js/isotope.min.js"></script>
-  <script src="app/assets/js/owl-carousel.js"></script>
 
-  <script src="app/assets/js/tabs.js"></script>
-  <script src="app/assets/js/popup.js"></script>
-  <script src="app/assets/js/custom.js"></script>
-  </body>
-</html>
+      <?php
+      include_once 'footerView.php';
+      ?>
+
+    </body>
+
+    </html>

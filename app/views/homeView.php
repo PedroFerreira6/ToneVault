@@ -46,7 +46,9 @@ https://templatemo.com/tm-577-liberty-market
   </div>
   <!-- ***** Preloader End ***** -->
 
-  <?php include_once 'headerView.php'; ?>
+  <?php 
+  
+  include_once 'headerView.php'; ?>
 
 
   <!-- ***** Main Banner Area Start ***** -->

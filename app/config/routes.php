@@ -108,6 +108,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         'controller' => 'ItemPageController',
         'action' => 'deleteAudio'
     ];
+    $routes['profile?id=' . $_GET['id']] = [
+        'controller' => 'ProfileController',
+        'action' => 'index'
+    ];
 }
 
 if (isset($_GET['s']) || isset($_GET['p'])) {
