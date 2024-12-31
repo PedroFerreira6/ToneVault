@@ -73,6 +73,10 @@ $routes = [
         'controller' => 'ProfileController',
         'action' => 'index'
     ],
+    'profile/editPassword' => [
+        'controller' => 'ProfileController',
+        'action' => 'editPassword'
+    ],
     'wallet' => [
         'controller' => 'WalletController',
         'action' => 'index'

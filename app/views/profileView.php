@@ -78,7 +78,7 @@
                     <div class="col-12" style="width: 100%;">
                       <fieldset>
                         <label for="title">Confirm Password</label>
-                        <input type="password" name="password" id="title" placeholder="Confirm Pasword" style="width: 100%;" autocomplete="on" required="">
+                        <input type="password" name="cpassword" id="title" placeholder="Confirm Pasword" style="width: 100%;" autocomplete="on" required="">
                       </fieldset>
                     </div>
                     <br>
