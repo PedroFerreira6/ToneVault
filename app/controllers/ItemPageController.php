@@ -220,7 +220,7 @@ class ItemPageController
                     exit();
                 }
 
-                $updateResult = $audioModel->editarAudio(
+                $updateResult = $audioModel->editarAudioAdmin(
                     $audioId,
                     $title,
                     $description,

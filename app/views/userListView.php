@@ -46,7 +46,10 @@ https://templatemo.com/tm-577-liberty-market
     <!-- ***** Preloader End ***** -->
 
     <!-- ***** Header Area Start ***** -->
-    <?php require 'headerView.php'  ?>
+    <?php 
+            $local = 6;
+
+    require 'headerView.php'  ?>
     <!-- ***** Header Area End ***** -->
 
 

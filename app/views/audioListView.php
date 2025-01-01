@@ -33,9 +33,12 @@
         </div>
     </div>
     <!-- Preloader End -->
-
+    
     <!-- Header Area Start -->
-    <?php require 'headerView.php'; ?>
+    <?php 
+        $local = 5;
+
+    require 'headerView.php'; ?>
     <!-- Header Area End -->
 
     <div class="item-details-page">
@@ -77,8 +80,8 @@
                                             <td style="color:white"><?= htmlspecialchars($audio['titulo']); ?></td>
                                             <td style="color:white"><?= htmlspecialchars($audio['descricao']); ?></td>
                                             <td style="color:white"><?= htmlspecialchars($audio['valor']); ?> €</td>
-                                            <td style="color:white"><?= $audio['privacidade'] ? 'Privado' : 'Público'; ?></td>
-                                            <td style="color:white"><?= $audio['estado'] ? 'Ativo' : 'Inativo'; ?></td>
+                                            <td style="color:white"><?= $audio['privacidade'] ? 'Public' : 'Private'; ?></td>
+                                            <td style="color:white"><?= $audio['estado'] ? 'Sell The Audio Rights' : 'Only For Listening'; ?></td>
                                             <td>
                                                 <a href="/item?id=<?= $audio['id']; ?>" class="btn btn-info btn-sm">See</a>
                                                 <?php if ($_SESSION['user_id'] == $audio['idUtilizador'] || $_SESSION['nivel'] == 2 || $_SESSION['nivel'] == 3): ?>

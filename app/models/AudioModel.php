@@ -156,6 +156,33 @@ class AudioModel
             $idUtilizador
         ]);
     }
+
+    public function editarAudioAdmin($id, $titulo, $descricao, $valor, $idUtilizador, $privacidade, $estado)
+    {
+        $stmt = $this->db->prepare(
+            'UPDATE audios 
+             SET titulo = ?, 
+                 descricao = ?, 
+                 valor = ?, 
+                 idUtilizador = ?, 
+                 privacidade = ?, 
+                 estado = ? 
+             WHERE id = ?'
+        );
+        return $stmt->execute([
+            $titulo,
+            $descricao,
+            $valor,
+            $idUtilizador,
+            $privacidade,
+            $estado,
+            $id
+        ]);
+    }
+
+
+
+
     public function addView($idAudio, $idUtilizador)
     {
         try {
