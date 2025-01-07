@@ -107,7 +107,7 @@ class AudioModel
         $stmt = $this->db->prepare(
             "SELECT a.*, u.nome, COUNT(t.idAudio) AS totalTransfers
              FROM audios a
-             LEFT JOIN transacoesAudios t ON a.id = t.idAudio
+             LEFT JOIN transacoesaudios t ON a.id = t.idAudio
              LEFT JOIN utilizadores u ON a.idUtilizador = u.id
              WHERE a.privacidade = 1
              GROUP BY a.id
@@ -178,6 +178,9 @@ class AudioModel
             $estado,
             $id
         ]);
+
+
+        
     }
 
 

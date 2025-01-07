@@ -16,10 +16,13 @@ class UserController
             $user = $userModel->authenticate($email, $password);
 
             if ($user) {
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['nivel'] = $user['nivel'];
-
+                if ($user['estado'] == 1) {
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['email'] = $user['email'];
+                    $_SESSION['nivel'] = $user['nivel'];
+                }else{
+                    $_SESSION['bloq'] = true;
+                }
                 header('Location: /home');
                 exit();
             } else {

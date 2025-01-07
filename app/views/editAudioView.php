@@ -68,6 +68,7 @@ https://templatemo.com/tm-577-liberty-market
                         </div>
                     </div>
                     <div class="col-lg-5 align-self-center">
+                    <label for="title">Title</label>
                         <input type="text" name="title" id="title" placeholder="Title" style="width: 100%;" autocomplete="on" required="" value="<?= $audio['titulo'] ?>">
                         <label for="owner">Change Audio Owner</label>
                         <select name="owner" class="form-select" style="background-color: rgb(40, 43, 47); border: 1px solid rgb(64, 66, 69); border-radius: 23px; color: rgb(175, 175, 175); cursor: text; display: inline-block; font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: normal; line-height: 24px; margin-bottom: 30px; margin-right: 15px; outline: none; padding: 0 15px; text-align: left; width: 100%;">
@@ -77,6 +78,8 @@ https://templatemo.com/tm-577-liberty-market
                                 </option>
                             <?php endforeach; ?>
                         </select>
+                        <label for="description">Description</label>
+
                         <textarea name="description" id="description" placeholder="Give us your idea" style="
     background-color: rgb(40, 43, 47);
     border: 1px solid rgb(64, 66, 69);
