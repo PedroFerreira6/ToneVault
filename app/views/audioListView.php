@@ -79,7 +79,7 @@
                                         <tr>
                                             <td style="color:white"><?= htmlspecialchars($audio['titulo']); ?></td>
                                             <td style="color:white"><?= htmlspecialchars($audio['descricao']); ?></td>
-                                            <td style="color:white"><?= htmlspecialchars($audio['valor']); ?> €</td>
+                                            <td style="color:white"><?= htmlspecialchars($audio['valor']); ?> toins</td>
                                             <td style="color:white"><?= $audio['privacidade'] ? 'Public' : 'Private'; ?></td>
                                             <td style="color:white"><?= $audio['estado'] ? 'Sell The Audio Rights' : 'Only For Listening'; ?></td>
                                             <td>
