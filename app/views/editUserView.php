@@ -71,7 +71,7 @@ https://templatemo.com/tm-577-liberty-market
 
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($user['email']); ?>" required disabled>
+                            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($user['email']); ?>" required>
                         </div>
 
                         <div class="mb-3">

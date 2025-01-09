@@ -132,7 +132,7 @@ class UserModel
             a.titulo AS titulo_audio,
             u.nome AS nome_antigo_dono
         FROM 
-            transacoesAudios t
+            transacoesaudios t
         JOIN 
             audios a ON t.idAudio = a.id
         JOIN 
@@ -186,7 +186,7 @@ class UserModel
             a.titulo AS titulo_audio,
             u.nome AS nome_comprador
         FROM 
-            transacoesAudios t
+            transacoesaudios t
         JOIN 
             audios a ON t.idAudio = a.id
         JOIN 
