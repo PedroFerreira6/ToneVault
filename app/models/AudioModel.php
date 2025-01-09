@@ -258,7 +258,7 @@ class AudioModel
                 } elseif ($audio['estado'] == 1) {
                     // Compra de áudio com direitos
                     $stmtTransacao = $this->db->prepare(
-                        "INSERT INTO transacoesAudios (valor, idUtilizadorIn, idUtilizadorOut, idAudio) VALUES (?, ?, ?, ?)"
+                        "INSERT INTO transacoesaudios (valor, idUtilizadorIn, idUtilizadorOut, idAudio) VALUES (?, ?, ?, ?)"
                     );
                     if (!$stmtTransacao->execute([$audio['valor'], $idUtilizador, $audio['idUtilizador'], $idAudio])) {
                         return "Error: Failed to register transaction.";
